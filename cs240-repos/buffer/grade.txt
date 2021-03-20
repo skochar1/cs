@@ -1,0 +1,132 @@
++----------------------------------------------------------------------+
+| cs240f20 Buffer (buffer) Grade Summary                               |
++----------------------------------------------------------------------+
+  Exploits: 80 / 80
+    Exploit 1: 25 / 25
+      Successful attack! :)
+    Exploit 2: 25 / 25
+      Successful attack! :)
+    Exploit 3: 15 / 15
+      Successful attack! :)
+    Exploit 4: 15 / 15
+      Successful attack! :)
+  Descriptions: 19.5 / 20.0
+    Exploit 1: 5.0 / 5.0
+      a: First affected control-flow instruction: 1.0 / 1.0
+        Gives correct address and code of the retq in getbuf.
+      b: Cause of different retq behavior: 2.0 / 2.0
+        Relevant bytes (offset) in exploit string: 1.0 / 1.0
+          Identifies the 8 bytes at offset 56 in the exploit string.
+        Effect of these bytes on the retq: 1.0 / 1.0
+          Identifies that these bytes overwrite the slot where retq
+          finds the return address, thereby controlling the address
+          of the next instruction to execute after retq.
+      c: Normal next instruction: 1.0 / 1.0
+        Correct next instruction.
+      d: Exploited next instruction: 1.0 / 1.0
+        Correct next instruction.
+    Exploit 2: 5.0 / 5.0
+      a: Exploit structure: 3.0 / 3.0
+        Placement of padding word: 1.0 / 1.0
+          Accurately describes placement of padding word after return address in exploit string,
+        Placement of cookie word: 1.0 / 1.0
+          Accurately describes placement of cookie word in exploit string,
+        Interaction of exploit and fizz through stack: 1.0 / 1.0
+          Clearly describes relation of cookie placement in exploit string
+          and how fizz finds val on the stack.
+      b: fizz instruction that finds val: 1.0 / 1.0
+        Gives the address and code of the instruction in fizz,
+        that finds val on the stack.
+      c: fizz stack offset for val: 1.0 / 1.0
+        Gives the stack offset that fizz uses to find val.
+    Exploit 3: 4.5 / 5.0
+      a: Dynamic exploit instruction sequence: 2.0 / 2.5
+        Instruction addresses: 0.0 / 0.5
+          Does not give concrete instruction addresses.
+        Instruction listing: 2.0 / 2.0
+          Complete.
+      b: Instruction effects: 2.5 / 2.5
+        Accurately describes all instruction effects.
+    Exploit 4: 5.0 / 5.0
+      a: Instruction that inspects return value: 1.0 / 1.0
+        Correct instruction.
+      b: Instruction that stores return value: 1.0 / 1.0
+        Instruction: 0.5 / 0.5
+          Correct instruction.
+        Execution time relative to getbuf retq: 0.5 / 0.5
+          After.
+      c-d: Use %rbp, which was restored from overwritten stack in getbuf: 0.5 / 0.5
+        Correct instruction and register usage: %rbp.
+      e-f: getbuf restores callee-saved value from overwritten stack into %rbp: 0.5 / 0.5
+        Identifies callee-save register convention.
+      g: Crash cause: 1.0 / 1.0
+        Describes a feasible cause for crashes in incomplete exploits.
+      h: Crash avoidance: 1.0 / 1.0
+        Accurately describes how this exploit avoids crash-causing corruption.
++----------------------------------------------------------------------+
+| TOTAL: 99.5 / 100.0                                                  |
++----------------------------------------------------------------------+
+
++----------------------------------------------------------------------+
+| meta.out                                                             |
++----------------------------------------------------------------------+
+Buffer (buffer) submission by:
+  sk1: Shreya Kochar <sk1@wellesley.edu>
+
+Commit log as of this report:
+
+commit 3e0f698ae071e16692c890ca0ddc8f328226061c
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Wed Sep 30 21:38:10 2020 -0400
+
+    exploit4 comments updated
+
+commit 7dd85b313dea73eb8414fcf0d0b294a4a75a5f54
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Wed Sep 30 02:01:15 2020 -0400
+
+    signature by sk1
+
+commit a6c4a99cc833a01f1d437ec105c793b43fdc3854
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Wed Sep 30 02:01:12 2020 -0400
+
+    responses by sk1
+
+commit 96e09ef5eb10f923d128aa45410cd24d06eacf6c
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Wed Sep 30 02:00:34 2020 -0400
+
+    final draft
+
+commit dafb0d8590ffc026d62d8e4a9ec374e769674dad
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sun Sep 27 22:21:10 2020 -0400
+
+    only exploit 4 left
+
+commit 4eae11c6d09241d0b9891c4ba121224816e1ac90
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sun Sep 27 08:58:14 2020 -0400
+
+    exploits 1 and 2 done
+
+commit ebc4e9112938da78e64a4e48faa9548b68df3023
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Thu Sep 24 02:06:03 2020 -0400
+
+    [make cookie]
+
+commit e959809194bb53d7c17d65fa74314955bbed8a52
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Thu Sep 24 02:01:06 2020 -0400
+
+    sk1 started team sk1
+
+commit 2eb69c012e30fc45850be7609bdff4bd3c134199
+Author: Ben Wood <benjamin.wood@wellesley.edu>
+Date:   Mon Sep 21 21:39:14 2020 -0400
+
+    Starter code for Buffer
+
+

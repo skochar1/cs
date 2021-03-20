@@ -1,0 +1,14 @@
+[
+    {
+        "prompt": "About how many minutes did you spend actively working on this tutorial?",
+        "type": "float"
+    },
+    {
+        "prompt": "What was your skill level with version control (e.g., Git) before this tutorial?\n(0 = none, 1 = novice, 2 = intermediate, 3 = expert)",
+        "type": "int"
+    },
+    {
+        "prompt": "What was your partner's skill level with version control (e.g., Git) before this tutorial?\n(0 = none, 1 = novice, 2 = intermediate, 3 = expert)",
+        "type": "int"
+    }
+]

@@ -1,0 +1,132 @@
+{
+    "title": "cs240f20 Pointers (pointers) Grade Summary",
+    "links": [],
+    "subgrades": [
+        {
+            "title": "Functional Correctness",
+            "links": [
+                ".gradetree/correctness.out"
+            ],
+            "subgrades": [
+                {
+                    "title": "validity",
+                    "links": [],
+                    "points": [
+                        8,
+                        10
+                    ]
+                },
+                {
+                    "title": "status",
+                    "links": [],
+                    "points": [
+                        4,
+                        5
+                    ]
+                },
+                {
+                    "title": "ampersand",
+                    "links": [],
+                    "points": [
+                        5,
+                        5
+                    ]
+                },
+                {
+                    "title": "structure",
+                    "links": [],
+                    "points": [
+                        28,
+                        30
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Memory Safety and Efficiency",
+            "links": [
+                ".gradetree/memory.out"
+            ],
+            "subgrades": [
+                {
+                    "title": "memory safety (no valgrind errors?) ",
+                    "links": [],
+                    "notes": [
+                        "memory errors  : 8"
+                    ],
+                    "points": [
+                        3,
+                        10
+                    ]
+                },
+                {
+                    "title": "efficient allocation (minimal size?)",
+                    "links": [],
+                    "notes": [
+                        "bytes allocated: 7291"
+                    ],
+                    "points": [
+                        5,
+                        5
+                    ]
+                },
+                {
+                    "title": "efficient reclamation (no leaks?)   ",
+                    "links": [],
+                    "notes": [
+                        "direct leaks   : 198",
+                        "indirect leaks : 0"
+                    ],
+                    "points": [
+                        3,
+                        5
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Design, Style, Documentation",
+            "links": [],
+            "subgrades": [
+                {
+                    "title": "Idiomatic pointer style",
+                    "links": [
+                        ".gradetree/style.out"
+                    ],
+                    "notes": [
+                        "array   index expressions (-1 per 1):   0",
+                        "pointer index expressions (-1 per 1-2): 0"
+                    ],
+                    "points": [
+                        10,
+                        10
+                    ]
+                },
+                {
+                    "title": "Structure and Design",
+                    "links": [],
+                    "notes": [
+                        "Good control flow structure and organization, with some opportunities",
+                        "for restructuring to improve simplicity or clarity.",
+                        "Using the numWords helper is nice, but some logic that we would hope could be handled there is not, such as foreground/background status. There are also a few special cases (empty foreground command, empty background command) that could be handled more generally. Overall, this helper function and its interaction with command_parse could use some redesign."
+                    ],
+                    "points": [
+                        8,
+                        10
+                    ]
+                },
+                {
+                    "title": "Documentation",
+                    "links": [],
+                    "notes": [
+                        "Clear, complete, and concise documentation."
+                    ],
+                    "points": [
+                        10,
+                        10
+                    ]
+                }
+            ]
+        }
+    ]
+}

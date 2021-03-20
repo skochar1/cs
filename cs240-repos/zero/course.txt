@@ -1,0 +1,54 @@
+What should you do if you can’t finish an assignment before the
+deadline?
+
+We can use the self-serve 48-hour late pass and mark the options 
+regarding our progress. If this is not enough, we can email the 
+professor for an extension with a plan of when and how you will make up 
+the work, as well as a progress report.
+
+
+Is it ever acceptable to view another student’s code? If so, under
+what circumstances?
+
+If you are working in a team for synthesis assignments, you are allowed
+to view your team's code. Otherwise, it is unacceptable to view any other 
+person/team's code work.
+
+Is it acceptable for two individuals to write a full code solution
+together on a whiteboard or shared document, then immediately type it
+up in their individual assignment submissions?
+
+It is completely unacceptable to write a full code solution together
+and then use the exact copy of the solution for their own individual 
+assignments.
+
+When is it acceptable for one individual student to offer another
+individual student help understanding an error message?
+
+It is acceptable for one student to help another student 
+understand an error message so long as they are not sharing code/
+viewing each other's coded solutions.
+
+
+Give an example of when it is not acceptable to discuss high-level
+strategies for part of an assignment with another student.
+
+It is not acceptable to discuss high-level strategies on any
+part of an assignment that is meant to be independent/individual work.
+
+Why should you run CS 240 code on the CS Linux environment (remotely
+through VS Code/SSH from your computer or directly in the SCI L037 CS
+Systems Lab) instead of installing a C compiler and working with code
+directly on your own computer?
+
+Running CS 240 code on the CS Linux environment makes it easier for
+us to avoid running into errors from incompatibilities in different
+opperating systems and the low-level details of the languages we are
+studying (C, Assembly language, etc.).
+
+What is one good next step if compiling or running your code raises an
+error you do not understand?
+
+Checking the CS 240 documentation is probably the ideal first step. If
+you still need help, visiting either the 0xCAFE or the OxFOrum would be 
+a good next step. 

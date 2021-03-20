@@ -1,0 +1,3972 @@
++----------------------------------------------------------------------+
+| cs240f20 Pointers (pointers) Grade Summary                           |
++----------------------------------------------------------------------+
+  Functional Correctness: 45 / 50
+    See more in section "correctness.out" below.
+    validity: 8 / 10
+    status: 4 / 5
+    ampersand: 5 / 5
+    structure: 28 / 30
+  Memory Safety and Efficiency: 11 / 20
+    See more in section "memory.out" below.
+    memory safety (no valgrind errors?) : 3 / 10
+      memory errors  : 8
+    efficient allocation (minimal size?): 5 / 5
+      bytes allocated: 7291
+    efficient reclamation (no leaks?)   : 3 / 5
+      direct leaks   : 198
+      indirect leaks : 0
+  Design, Style, Documentation: 28 / 30
+    Idiomatic pointer style: 10 / 10
+      array   index expressions (-1 per 1):   0
+      pointer index expressions (-1 per 1-2): 0
+      See more in section "style.out" below.
+    Structure and Design: 8 / 10
+      Good control flow structure and organization, with some opportunities
+      for restructuring to improve simplicity or clarity.
+      Using the numWords helper is nice, but some logic that we would hope could be handled there is not, such as foreground/background status. There are also a few special cases (empty foreground command, empty background command) that could be handled more generally. Overall, this helper function and its interaction with command_parse could use some redesign.
+    Documentation: 10 / 10
+      Clear, complete, and concise documentation.
++----------------------------------------------------------------------+
+| TOTAL:  84 / 100                                                     |
++----------------------------------------------------------------------+
+
++----------------------------------------------------------------------+
+| meta.out                                                             |
++----------------------------------------------------------------------+
+Pointers (pointers) submission by:
+  jl4: Julie Lely <jl4@wellesley.edu>
+  sk1: Shreya Kochar <sk1@wellesley.edu>
+
+Commit log as of this report:
+
+commit 56dc12b5f999546070ec831344bcbdfa9ef5bba3
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 21:19:44 2020 -0400
+
+    signature by sk1
+
+commit 24f1d4be4e6aad0413b308ce6b1e85a5f9d1caae
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 21:19:31 2020 -0400
+
+    responses by sk1
+
+commit 8b82ea21001699f5c2238451700e1b84ca3d72bc
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 21:19:04 2020 -0400
+
+    signature by sk1
+
+commit 873ddb85feb6813661ebb2d10ce4329d7920c018
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 21:18:50 2020 -0400
+
+    responses by sk1
+
+commit d51002f2cd03da7a6112fc191f925ef623741141
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 21:18:24 2020 -0400
+
+    probably the final version
+
+commit 10d6ec8a80dd7690e3633ae4ad77e17018e35d46
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 20:43:05 2020 -0400
+
+    this is so hard
+
+commit 80d514cb9acf0ea15cd89c0e76709d6fd35ff326
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 20:02:53 2020 -0400
+
+    empty spaces included
+
+commit de4dece6cff79ecbff834697ddaa1d4c730d479d
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Tue Sep 15 18:39:07 2020 -0400
+
+    Added more comments and added one more test case
+
+commit d18ba11e6c2349ccb57b622a069fae95f9891aad
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 18:31:09 2020 -0400
+
+    .
+
+commit f766dd28dd10ac30b70dfee40f1fb3c6e296c8fd
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 16:01:58 2020 -0400
+
+    commented
+
+commit 4b2475a097047cb628f9234cc461c5d6a9ffa206
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 15:00:08 2020 -0400
+
+    added comments
+
+commit 3d4f919b3ed22691a9b519466efbbceb7b6153b8
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 15 14:48:43 2020 -0400
+
+    test
+
+commit c51ca693a2d839b5b95507e849cf9480158a9a68
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Tue Sep 15 14:41:55 2020 -0400
+
+    added more test cases and small edit
+
+commit f399469d9c70f867cb05b01a5ae2a42d20cf2e59
+Merge: 6515eb8 c6d18c0
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sun Sep 13 18:45:12 2020 -0400
+
+    test cases added
+
+commit c6d18c010f7c6a14a8ce4bfcad8a89bf817513ba
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Sun Sep 13 16:55:54 2020 -0400
+
+    fix substring
+
+commit 740a743051d003f24e5aeee22b01f9b0ad90f24c
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Sun Sep 13 16:46:07 2020 -0400
+
+    changed arrays to cursors
+
+commit 4ceef40ac492b7951259282bcde698bdb5263efb
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Sun Sep 13 14:39:32 2020 -0400
+
+    Small changes to command_show and remove get_length_a
+
+commit 6515eb8105ccc62493eb7110758211c7776ab49a
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sun Sep 13 13:02:10 2020 -0400
+
+    signature by sk1
+
+commit b48491aea45802061c7e6123c26dabd1066d6c0a
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sun Sep 13 13:02:03 2020 -0400
+
+    responses by sk1
+
+commit e3a433ae2cc7f1ceb68f8dc7784c72507000ba4e
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sun Sep 13 13:01:16 2020 -0400
+
+    signature by sk1
+
+commit 3a9990de88b8a5528691964503a6f2d557a6bd90
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sun Sep 13 13:01:10 2020 -0400
+
+    responses by sk1
+
+commit 67e5fa7a5fdbc2c1aff5eb406644318b93dc7e03
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sun Sep 13 13:00:43 2020 -0400
+
+    Final version hopefully
+
+commit 6d5860a5d4ed62c049bf64167b8b6a78d3ffd992
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Sat Sep 12 21:20:09 2020 -0400
+
+    made changes
+
+commit b2279c865efa56ea399f13d3f70da6d7558a2d99
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sat Sep 12 19:40:43 2020 -0400
+
+    Updated command_print
+
+commit 915eb207f537fc363e6e78807db96db178b0e3b4
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Sat Sep 12 18:54:43 2020 -0400
+
+    Updated command.c
+
+commit 2e5ad202d51c63c3e56aa70567c5ae2951689d1b
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Sat Sep 12 17:18:45 2020 -0400
+
+    Updated file
+
+commit 3328fa8f43d960023b2ae6f21564392cd4258f25
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Sat Sep 12 10:03:32 2020 -0400
+
+    Updated command.c
+
+commit 3f0e24682bb3c2435f70cce41b0b3028d34ffac3
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Fri Sep 11 21:33:05 2020 -0400
+
+    signature by sk1
+
+commit 449717b29cb74716ad3fd4cdca0d8cc1fa8d4b83
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Fri Sep 11 21:32:56 2020 -0400
+
+    responses by sk1
+
+commit aa1880501a80f84d710283644a051ce8e8192c92
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Fri Sep 11 21:32:24 2020 -0400
+
+    First draft
+
+commit c41126424c0bee89c89bc061894f119e390659b3
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Thu Sep 10 12:05:10 2020 -0400
+
+    sk1 started team jl4-sk1
+
+commit 2f3379fbb73680ec36fc117c7ce3e115083fe933
+Author: Ben Wood <benjamin.wood@wellesley.edu>
+Date:   Wed Sep 9 17:09:59 2020 -0400
+
+    Starter code for Pointers
+
+
+
++----------------------------------------------------------------------+
+| correctness.out                                                      |
++----------------------------------------------------------------------+
+
+$ make ./command_grade
+gcc -Wall -g --std=c99 -c command.c
+gcc -Wall -g --std=c99 -c soln_command.c
+gcc -Wall -g --std=c99 -Werror --std=gnu99 command_grade.c command.o soln_command.o -o command_grade
+
+$ ./command_grade
+Running 100 tests
+Setting timeout for 10 seconds
+Testing command "Hello world!  Please parse    me."
+Testing command "emacs"
+Testing command "emacs "
+Testing command " emacs"
+Testing command " emacs "
+Testing command "cat shell.c command.h Makefile"
+Testing command "   echo hello world"
+Testing command "   echo hello   world"
+Testing command "   echo   hello world"
+Testing command "   echo   hello   world"
+Testing command "   echo hello   world   "
+Testing command "echo   hello world  "
+Testing command ""
+Testing command "a"
+Testing command " a"
+Testing command "a "
+Testing command " a "
+Testing command "  a"
+Testing command "a  "
+Testing command " a  "
+Testing command "  a "
+Testing command "  a  "
+Testing command "a bc"
+Testing command " a bc"
+Testing command "a bc"
+Testing command " a bc"
+Testing command "  a bc"
+Testing command "a  bc"
+Testing command " a  bc"
+Testing command "  a bc"
+Testing command "  a  bc"
+Testing command "a bc  "
+Testing command " a bc  "
+Testing command "a bc  "
+Testing command " a bc  "
+Testing command "  a bc  "
+Testing command "a  bc  "
+Testing command " a  bc  "
+Testing command "  a bc  "
+Testing command "  a  bc  "
+Testing command "bc a"
+Testing command " bc a"
+Testing command "bc a"
+Testing command " bc a"
+Testing command "  bc a"
+Testing command "bc  a"
+Testing command " bc  a"
+Testing command "  bc a"
+Testing command "  bc  a"
+Testing command "bc a  "
+Testing command " bc a  "
+Testing command "bc a  "
+Testing command " bc a  "
+Testing command "  bc a  "
+Testing command "bc  a  "
+Testing command " bc  a  "
+Testing command "  bc a  "
+Testing command "  bc  a  "
+Testing command "a b"
+Testing command " a b"
+Testing command "a b "
+Testing command " a b "
+Testing command "  a  b  "
+Testing command "emacs &"
+  Error: command array has 2 words (expected 1)
+  Error: command array word 1 is extra, EMPTY and incorrect (expected only 1 words)
+command array:
+  0. "emacs"
+  1. ""
+end
+
+Testing command "emacs&   "
+Testing command "sleep 10&"
+Testing command "sleep 10 &"
+  Error: command array has 3 words (expected 2)
+  Error: command array word 2 is extra, EMPTY and incorrect (expected only 2 words)
+command array:
+  0. "sleep"
+  1. "10"
+  2. ""
+end
+
+Testing command "sleep 10  &"
+  Error: command array has 3 words (expected 2)
+  Error: command array word 2 is extra, EMPTY and incorrect (expected only 2 words)
+command array:
+  0. "sleep"
+  1. "10"
+  2. ""
+end
+
+Testing command "sleep 10& "
+Testing command "sleep 10 & "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 2 is extra, EMPTY and incorrect (expected only 2 words)
+command array:
+  0. "sleep"
+  1. "10"
+  2. ""
+end
+
+Testing command "sleep 10  & "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 2 is extra, EMPTY and incorrect (expected only 2 words)
+command array:
+  0. "sleep"
+  1. "10"
+  2. ""
+end
+
+Testing command "sleep 10&   "
+Testing command "sleep 10 &   "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 2 is extra, EMPTY and incorrect (expected only 2 words)
+command array:
+  0. "sleep"
+  1. "10"
+  2. ""
+end
+
+Testing command "sleep 10  &   "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 2 is extra, EMPTY and incorrect (expected only 2 words)
+command array:
+  0. "sleep"
+  1. "10"
+  2. ""
+end
+
+Testing command "  a  b  &  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 2 is extra, EMPTY and incorrect (expected only 2 words)
+command array:
+  0. "a"
+  1. "b"
+  2. ""
+end
+
+Testing command "&uhoh"
+Testing command "   &uhoh"
+Testing command "&uhoh   "
+Testing command "  &uhoh  "
+Testing command "  & uh oh"
+Testing command "  & uh oh  "
+Testing command "  &   uh oh  "
+Testing command "uh&oh"
+Testing command "uh& oh"
+Testing command "uh & oh"
+Testing command "uh &oh"
+Testing command "  uh&oh"
+Testing command "  uh& oh"
+Testing command "  uh & oh"
+Testing command "  uh &oh"
+Testing command "  uh&oh  "
+Testing command "  uh& oh  "
+Testing command "  uh & oh  "
+Testing command "  uh &oh  "
+Testing command "uh& &oh"
+Testing command "uh oh&&"
+Testing command "uh oh &&"
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+Testing command "uh oh & &"
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+Testing command "uh oh &  &"
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+Testing command "uh oh &  &  "
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+Summary: all tests..........88 passed / 100 done / 100 total
+  Valid foreground tests....63 passed / 63 done / 63 total
+  Valid background tests....4 passed / 12 done / 12 total
+  All invalid tests.........21 passed / 25 done / 25 total
+Summary: all errors.........24
+  Command validity errors...4
+  Command status errors.....4
+  Command malloc errors.....0
+  Command length errors.....8 (+0 due to '&')
+  Command word errors.......8 (+0 due to '&', 144 words expected)
+  Command ampersand errors..0
+
+
++----------------------------------------------------------------------+
+| memory.out                                                           |
++----------------------------------------------------------------------+
+
+$ make ./command_mem
+gcc -Wall -g --std=c99 -c command.c
+gcc -Wall -g --std=c99 command_mem.c command.o -o command_mem
+
+$ valgrind ./command_mem
+==26510== Memcheck, a memory error detector
+==26510== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==26510== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==26510== Command: ./command_mem
+==26510== 
+######## Setting timeout for 10 seconds
+######## Running 2 print tests with heap sources
+#### Test 0
+# Command array 0:
+command array:
+    - "ls"
+    - "-A"
+    - "filename.txt"
+end
+# As command line: 
+ls -A filename.txt
+command array:
+    - "emacs"
+    - "command.c"
+    - "command.h"
+    - "Makefile"
+end
+#### Test 1
+# Command array 1:
+emacs command.c command.h Makefile
+# As command line: 
+######## Running 100 parser tests with static sources
+#### Test 0
+# Parsing: "Hello world!  Please parse    me."
+# Parsed foreground command:
+command array:
+    - "Hello"
+    - "world!"
+    - "Please"
+    - "parse"
+    - "me."
+end
+# As command line: 
+Hello world! Please parse me.
+command array:
+    - "emacs"
+end
+emacs
+command array:
+    - "emacs"
+end
+emacs
+command array:
+    - "emacs"
+end
+emacs
+command array:
+    - "emacs"
+end
+emacs
+command array:
+    - "cat"
+    - "shell.c"
+    - "command.h"
+    - "Makefile"
+end
+cat shell.c command.h Makefile
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+# Freed command array.
+#### Test 1
+# Parsing: "emacs"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 2
+# Parsing: "emacs "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 3
+# Parsing: " emacs"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 4
+# Parsing: " emacs "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 5
+# Parsing: "cat shell.c command.h Makefile"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 6
+# Parsing: "   echo hello world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - " "
+end
+ 
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+#### Test 7
+# Parsing: "   echo hello   world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 8
+# Parsing: "   echo   hello world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 9
+# Parsing: "   echo   hello   world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 10
+# Parsing: "   echo hello   world   "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 11
+# Parsing: "echo   hello world  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 12
+# Parsing: ""
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 13
+# Parsing: "a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 14
+# Parsing: " a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 15
+# Parsing: "a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 16
+# Parsing: " a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 17
+# Parsing: "  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 18
+# Parsing: "a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 19
+# Parsing: " a  "
+# Parsed foreground command:
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+# As command line: 
+# Freed command array.
+#### Test 20
+# Parsing: "  a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 21
+# Parsing: "  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 22
+# Parsing: "a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 23
+# Parsing: " a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 24
+# Parsing: "a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 25
+# Parsing: " a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 26
+# Parsing: "  a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 27
+# Parsing: "a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 28
+# Parsing: " a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 29
+# Parsing: "  a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 30
+# Parsing: "  a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 31
+# Parsing: "a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 32
+# Parsing: " a bc  "
+# Parsed foreground command:
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+# As command line: 
+# Freed command array.
+#### Test 33
+# Parsing: "a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 34
+# Parsing: " a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 35
+# Parsing: "  a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 36
+# Parsing: "a  bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 37
+# Parsing: " a  bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 38
+# Parsing: "  a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 39
+# Parsing: "  a  bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 40
+# Parsing: "bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 41
+# Parsing: " bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 42
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+# Parsing: "bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 43
+# Parsing: " bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 44
+# Parsing: "  bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 45
+# Parsing: "bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 46
+# Parsing: " bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 47
+# Parsing: "  bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 48
+# Parsing: "  bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 49
+# Parsing: "bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 50
+# Parsing: " bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 51
+# Parsing: "bc a  "
+# Parsed foreground command:
+# As command line: 
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "a"
+    - "b"
+end
+a b
+command array:
+    - "a"
+    - "b"
+end
+a b
+command array:
+    - "a"
+    - "b"
+end
+a b
+command array:
+    - "a"
+    - "b"
+end
+a b
+command array:
+    - "a"
+    - "b"
+end
+a b
+# Freed command array.
+#### Test 52
+# Parsing: " bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 53
+# Parsing: "  bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 54
+# Parsing: "bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 55
+# Parsing: " bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 56
+# Parsing: "  bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 57
+# Parsing: "  bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 58
+# Parsing: "a b"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 59
+# Parsing: " a b"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 60
+# Parsing: "a b "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 61
+# Parsing: " a b "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 62
+# Parsing: "  a  b  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 63
+# Parsing: "emacs &"
+==26510== Invalid write of size 8
+==26510==    at 0x401082: command_parse (command.c:253)
+==26510==    by 0x400A04: test_all (command_mem.c:159)
+==26510==    by 0x400D06: main (command_mem.c:225)
+==26510==  Address 0x520a100 is 0 bytes after a block of size 16 alloc'd
+==26510==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+command array:
+    - "emacs"
+    - ""
+end
+emacs 
+command array:
+    - "emacs"
+end
+emacs
+command array:
+    - "sleep"
+    - "10"
+end
+sleep 10
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+command array:
+    - "sleep"
+    - "10"
+end
+sleep 10
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+==26510==    by 0x400FB2: command_parse (command.c:201)
+==26510==    by 0x400A04: test_all (command_mem.c:159)
+==26510==    by 0x400D06: main (command_mem.c:225)
+==26510== 
+# Parsed background command:
+==26510== Invalid read of size 8
+==26510==    at 0x40111D: command_show (command.c:289)
+==26510==    by 0x400A90: test_all (command_mem.c:171)
+==26510==    by 0x400D06: main (command_mem.c:225)
+==26510==  Address 0x520a100 is 0 bytes after a block of size 16 alloc'd
+==26510==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+==26510==    by 0x400FB2: command_parse (command.c:201)
+==26510==    by 0x400A04: test_all (command_mem.c:159)
+==26510==    by 0x400D06: main (command_mem.c:225)
+==26510== 
+# As command line: 
+==26510== Invalid read of size 8
+==26510==    at 0x4011CB: command_print (command.c:332)
+==26510==    by 0x400AC9: test_all (command_mem.c:174)
+==26510==    by 0x400D06: main (command_mem.c:225)
+==26510==  Address 0x520a100 is 0 bytes after a block of size 16 alloc'd
+==26510==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+==26510==    by 0x400FB2: command_parse (command.c:201)
+==26510==    by 0x400A04: test_all (command_mem.c:159)
+==26510==    by 0x400D06: main (command_mem.c:225)
+==26510== 
+==26510== Invalid read of size 8
+==26510==    at 0x401223: command_free (command.c:355)
+==26510==    by 0x400AEE: test_all (command_mem.c:177)
+==26510==    by 0x400D06: main (command_mem.c:225)
+==26510==  Address 0x520a100 is 0 bytes after a block of size 16 alloc'd
+==26510==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+==26510==    by 0x400FB2: command_parse (command.c:201)
+==26510==    by 0x400A04: test_all (command_mem.c:159)
+==26510==    by 0x400D06: main (command_mem.c:225)
+==26510== 
+# Freed command array.
+#### Test 64
+# Parsing: "emacs&   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 65
+# Parsing: "sleep 10&"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 66
+# Parsing: "sleep 10 &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 67
+# Parsing: "sleep 10  &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 68
+# Parsing: "sleep 10& "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 69
+# Parsing: "sleep 10 & "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 70
+# Parsing: "sleep 10  & "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 71
+command array:
+    - "sleep"
+    - "10"
+end
+sleep 10
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+# Parsing: "sleep 10&   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 72
+# Parsing: "sleep 10 &   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 73
+# Parsing: "sleep 10  &   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 74
+command array:
+    - "a"
+    - "b"
+    - ""
+end
+a b 
+# Parsing: "  a  b  &  "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 75
+# Parsing: "&uhoh"
+# Invalid command.
+#### Test 76
+# Parsing: "   &uhoh"
+# Invalid command.
+#### Test 77
+# Parsing: "&uhoh   "
+# Invalid command.
+#### Test 78
+# Parsing: "  &uhoh  "
+# Invalid command.
+#### Test 79
+# Parsing: "  & uh oh"
+# Invalid command.
+#### Test 80
+# Parsing: "  & uh oh  "
+# Invalid command.
+#### Test 81
+# Parsing: "  &   uh oh  "
+# Invalid command.
+#### Test 82
+# Parsing: "uh&oh"
+# Invalid command.
+#### Test 83
+# Parsing: "uh& oh"
+# Invalid command.
+#### Test 84
+# Parsing: "uh & oh"
+# Invalid command.
+#### Test 85
+# Parsing: "uh &oh"
+# Invalid command.
+#### Test 86
+# Parsing: "  uh&oh"
+# Invalid command.
+#### Test 87
+# Parsing: "  uh& oh"
+# Invalid command.
+#### Test 88
+# Parsing: "  uh & oh"
+# Invalid command.
+#### Test 89
+# Parsing: "  uh &oh"
+# Invalid command.
+#### Test 90
+# Parsing: "  uh&oh  "
+# Invalid command.
+#### Test 91
+# Parsing: "  uh& oh  "
+# Invalid command.
+#### Test 92
+# Parsing: "  uh & oh  "
+# Invalid command.
+#### Test 93
+# Parsing: "  uh &oh  "
+# Invalid command.
+#### Test 94
+# Parsing: "uh& &oh"
+# Invalid command.
+#### Test 95
+# Parsing: "uh oh&&"
+# Invalid command.
+#### Test 96
+command array:
+    - "uh"
+    - "oh"
+    - ""
+end
+uh oh 
+command array:
+    - "uh"
+    - "oh"
+    - ""
+end
+uh oh 
+command array:
+    - "uh"
+    - "oh"
+    - ""
+end
+uh oh 
+command array:
+    - "uh"
+    - "oh"
+    - ""
+end
+uh oh 
+command array:
+    - "Hello"
+    - "world!"
+    - "Please"
+    - "parse"
+    - "me."
+end
+Hello world! Please parse me.
+command array:
+    - "emacs"
+end
+emacs
+command array:
+    - "emacs"
+end
+emacs
+command array:
+    - "emacs"
+end
+emacs
+command array:
+    - "emacs"
+end
+emacs
+# Parsing: "uh oh &&"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 97
+# Parsing: "uh oh & &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 98
+# Parsing: "uh oh &  &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 99
+# Parsing: "uh oh &  &  "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+######## Running 100 parser tests with heap sources
+#### Test 0
+# Parsing: "Hello world!  Please parse    me."
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 1
+# Parsing: "emacs"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 2
+# Parsing: "emacs "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 3
+# Parsing: " emacs"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 4
+# Parsing: " emacs "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 5
+command array:
+    - "cat"
+    - "shell.c"
+    - "command.h"
+    - "Makefile"
+end
+cat shell.c command.h Makefile
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - "echo"
+    - "hello"
+    - "world"
+end
+echo hello world
+command array:
+    - " "
+end
+ 
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+# Parsing: "cat shell.c command.h Makefile"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 6
+# Parsing: "   echo hello world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 7
+# Parsing: "   echo hello   world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 8
+# Parsing: "   echo   hello world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 9
+# Parsing: "   echo   hello   world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 10
+# Parsing: "   echo hello   world   "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 11
+# Parsing: "echo   hello world  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 12
+# Parsing: ""
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 13
+# Parsing: "a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 14
+# Parsing: " a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 15
+# Parsing: "a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 16
+# Parsing: " a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 17
+# Parsing: "  a"
+# Parsed foreground command:
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+end
+a
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+# As command line: 
+# Freed command array.
+#### Test 18
+# Parsing: "a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 19
+# Parsing: " a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 20
+# Parsing: "  a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 21
+# Parsing: "  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 22
+# Parsing: "a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 23
+# Parsing: " a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 24
+# Parsing: "a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 25
+# Parsing: " a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 26
+# Parsing: "  a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 27
+# Parsing: "a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 28
+# Parsing: " a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 29
+# Parsing: "  a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 30
+# Parsing: "  a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 31
+# Parsing: "a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 32
+# Parsing: " a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 33
+# Parsing: "a bc  "
+# Parsed foreground command:
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+# As command line: 
+# Freed command array.
+#### Test 34
+# Parsing: " a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 35
+# Parsing: "  a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 36
+# Parsing: "a  bc  "
+# Parsed foreground command:
+# As command line: 
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "a"
+    - "bc"
+end
+a bc
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+# Freed command array.
+#### Test 37
+# Parsing: " a  bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 38
+# Parsing: "  a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 39
+# Parsing: "  a  bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 40
+# Parsing: "bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 41
+# Parsing: " bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 42
+# Parsing: "bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 43
+# Parsing: " bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 44
+# Parsing: "  bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 45
+# Parsing: "bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 46
+# Parsing: " bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 47
+# Parsing: "  bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 48
+# Parsing: "  bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 49
+# Parsing: "bc a  "
+# Parsed foreground command:
+# As command line: 
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "bc"
+    - "a"
+end
+bc a
+command array:
+    - "a"
+    - "b"
+end
+a b
+command array:
+    - "a"
+    - "b"
+end
+a b
+command array:
+    - "a"
+    - "b"
+end
+a b
+command array:
+    - "a"
+    - "b"
+end
+a b
+command array:
+    - "a"
+    - "b"
+end
+# Freed command array.
+#### Test 50
+# Parsing: " bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 51
+# Parsing: "bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 52
+# Parsing: " bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 53
+# Parsing: "  bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 54
+# Parsing: "bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 55
+# Parsing: " bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 56
+# Parsing: "  bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 57
+# Parsing: "  bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 58
+# Parsing: "a b"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 59
+# Parsing: " a b"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 60
+# Parsing: "a b "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 61
+# Parsing: " a b "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 62
+# Parsing: "  a  b  "
+# Parsed foreground command:
+a b
+command array:
+    - "emacs"
+    - ""
+end
+emacs 
+command array:
+    - "emacs"
+end
+emacs
+command array:
+    - "sleep"
+    - "10"
+end
+sleep 10
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+command array:
+    - "sleep"
+    - "10"
+end
+sleep 10
+# As command line: 
+# Freed command array.
+#### Test 63
+# Parsing: "emacs &"
+==26510== Invalid write of size 8
+==26510==    at 0x401082: command_parse (command.c:253)
+==26510==    by 0x400A04: test_all (command_mem.c:159)
+==26510==    by 0x400D77: main (command_mem.c:232)
+==26510==  Address 0x5212480 is 0 bytes after a block of size 16 alloc'd
+==26510==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+==26510==    by 0x400FB2: command_parse (command.c:201)
+==26510==    by 0x400A04: test_all (command_mem.c:159)
+==26510==    by 0x400D77: main (command_mem.c:232)
+==26510== 
+# Parsed background command:
+==26510== Invalid read of size 8
+==26510==    at 0x40111D: command_show (command.c:289)
+==26510==    by 0x400A90: test_all (command_mem.c:171)
+==26510==    by 0x400D77: main (command_mem.c:232)
+==26510==  Address 0x5212480 is 0 bytes after a block of size 16 alloc'd
+==26510==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+==26510==    by 0x400FB2: command_parse (command.c:201)
+==26510==    by 0x400A04: test_all (command_mem.c:159)
+==26510==    by 0x400D77: main (command_mem.c:232)
+==26510== 
+# As command line: 
+==26510== Invalid read of size 8
+==26510==    at 0x4011CB: command_print (command.c:332)
+==26510==    by 0x400AC9: test_all (command_mem.c:174)
+==26510==    by 0x400D77: main (command_mem.c:232)
+==26510==  Address 0x5212480 is 0 bytes after a block of size 16 alloc'd
+==26510==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+==26510==    by 0x400FB2: command_parse (command.c:201)
+==26510==    by 0x400A04: test_all (command_mem.c:159)
+==26510==    by 0x400D77: main (command_mem.c:232)
+==26510== 
+==26510== Invalid read of size 8
+==26510==    at 0x401223: command_free (command.c:355)
+==26510==    by 0x400AEE: test_all (command_mem.c:177)
+==26510==    by 0x400D77: main (command_mem.c:232)
+==26510==  Address 0x5212480 is 0 bytes after a block of size 16 alloc'd
+==26510==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+==26510==    by 0x400FB2: command_parse (command.c:201)
+==26510==    by 0x400A04: test_all (command_mem.c:159)
+==26510==    by 0x400D77: main (command_mem.c:232)
+==26510== 
+# Freed command array.
+#### Test 64
+# Parsing: "emacs&   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 65
+# Parsing: "sleep 10&"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 66
+# Parsing: "sleep 10 &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 67
+# Parsing: "sleep 10  &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 68
+# Parsing: "sleep 10& "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 69
+# Parsing: "sleep 10 & "
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+command array:
+    - "sleep"
+    - "10"
+end
+sleep 10
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+command array:
+    - "sleep"
+    - "10"
+    - ""
+end
+sleep 10 
+command array:
+    - "a"
+    - "b"
+    - ""
+end
+a b 
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 70
+# Parsing: "sleep 10  & "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 71
+# Parsing: "sleep 10&   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 72
+# Parsing: "sleep 10 &   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 73
+# Parsing: "sleep 10  &   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 74
+# Parsing: "  a  b  &  "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 75
+# Parsing: "&uhoh"
+# Invalid command.
+#### Test 76
+command array:
+    - "uh"
+    - "oh"
+    - ""
+end
+uh oh 
+command array:
+    - "uh"
+    - "oh"
+    - ""
+end
+uh oh 
+command array:
+    - "uh"
+    - "oh"
+    - ""
+end
+uh oh 
+command array:
+    - "uh"
+    - "oh"
+    - ""
+end
+uh oh 
+# Parsing: "   &uhoh"
+# Invalid command.
+#### Test 77
+# Parsing: "&uhoh   "
+# Invalid command.
+#### Test 78
+# Parsing: "  &uhoh  "
+# Invalid command.
+#### Test 79
+# Parsing: "  & uh oh"
+# Invalid command.
+#### Test 80
+# Parsing: "  & uh oh  "
+# Invalid command.
+#### Test 81
+# Parsing: "  &   uh oh  "
+# Invalid command.
+#### Test 82
+# Parsing: "uh&oh"
+# Invalid command.
+#### Test 83
+# Parsing: "uh& oh"
+# Invalid command.
+#### Test 84
+# Parsing: "uh & oh"
+# Invalid command.
+#### Test 85
+# Parsing: "uh &oh"
+# Invalid command.
+#### Test 86
+# Parsing: "  uh&oh"
+# Invalid command.
+#### Test 87
+# Parsing: "  uh& oh"
+# Invalid command.
+#### Test 88
+# Parsing: "  uh & oh"
+# Invalid command.
+#### Test 89
+# Parsing: "  uh &oh"
+# Invalid command.
+#### Test 90
+# Parsing: "  uh&oh  "
+# Invalid command.
+#### Test 91
+# Parsing: "  uh& oh  "
+# Invalid command.
+#### Test 92
+# Parsing: "  uh & oh  "
+# Invalid command.
+#### Test 93
+# Parsing: "  uh &oh  "
+# Invalid command.
+#### Test 94
+# Parsing: "uh& &oh"
+# Invalid command.
+#### Test 95
+# Parsing: "uh oh&&"
+# Invalid command.
+#### Test 96
+# Parsing: "uh oh &&"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 97
+# Parsing: "uh oh & &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 98
+# Parsing: "uh oh &  &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 99
+# Parsing: "uh oh &  &  "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+==26510== 
+==26510== HEAP SUMMARY:
+==26510==     in use at exit: 1,584 bytes in 198 blocks
+==26510==   total heap usage: 784 allocs, 586 frees, 7,291 bytes allocated
+==26510== 
+==26510== LEAK SUMMARY:
+==26510==    definitely lost: 1,584 bytes in 198 blocks
+==26510==    indirectly lost: 0 bytes in 0 blocks
+==26510==      possibly lost: 0 bytes in 0 blocks
+==26510==    still reachable: 0 bytes in 0 blocks
+==26510==         suppressed: 0 bytes in 0 blocks
+==26510== Rerun with --leak-check=full to see details of leaked memory
+==26510== 
+==26510== For lists of detected and suppressed errors, rerun with: -s
+==26510== ERROR SUMMARY: 96 errors from 8 contexts (suppressed: 0 from 0)
+
+$ make ./soln_command_test
+gcc -Wall -g --std=c99 -c soln_command.c
+gcc -Wall -g --std=c99 soln_command_test.c soln_command.o -o soln_command_test
+
+$ valgrind ./soln_command_test
+==26622== Memcheck, a memory error detector
+==26622== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==26622== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==26622== Command: ./soln_command_test
+==26622== 
+######## Setting timeout for 10 seconds
+######## Running 2 print tests with heap sources
+#### Test 0
+# Command array 0:
+command
+  - "ls"
+  - "-A"
+  - "filename.txt"
+end
+# As command line: 
+ls -A filename.txt 
+#### Test 1
+command
+  - "emacs"
+  - "command.c"
+  - "command.h"
+  - "Makefile"
+end
+# Command array 1:
+# As command line: 
+emacs command.c command.h Makefile 
+command
+  - "Hello"
+  - "world!"
+  - "Please"
+  - "parse"
+  - "me."
+end
+Hello world! Please parse me. 
+######## Running 100 parser tests with static sources
+#### Test 0
+# Parsing: "Hello world!  Please parse    me."
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+command
+  - "emacs"
+end
+#### Test 1
+# Parsing: "emacs"
+# Parsed foreground command:
+# As command line: 
+emacs 
+command
+  - "emacs"
+end
+emacs 
+command
+  - "emacs"
+end
+emacs 
+command
+  - "emacs"
+end
+emacs 
+command
+  - "cat"
+  - "shell.c"
+  - "command.h"
+  - "Makefile"
+end
+cat shell.c command.h Makefile 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+end
+
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+# Freed command array.
+#### Test 2
+# Parsing: "emacs "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 3
+# Parsing: " emacs"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 4
+# Parsing: " emacs "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 5
+# Parsing: "cat shell.c command.h Makefile"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 6
+# Parsing: "   echo hello world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 7
+# Parsing: "   echo hello   world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 8
+# Parsing: "   echo   hello world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 9
+# Parsing: "   echo   hello   world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 10
+# Parsing: "   echo hello   world   "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 11
+# Parsing: "echo   hello world  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 12
+# Parsing: ""
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 13
+# Parsing: "a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 14
+# Parsing: " a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 15
+# Parsing: "a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 16
+# Parsing: " a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 17
+# Parsing: "  a"
+# Parsed foreground command:
+# As command line: 
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+# Freed command array.
+#### Test 18
+# Parsing: "a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 19
+# Parsing: " a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 20
+# Parsing: "  a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 21
+command
+  - "a"
+end
+a 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+# Parsing: "  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 22
+# Parsing: "a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 23
+# Parsing: " a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 24
+# Parsing: "a bc"
+# Parsed foreground command:
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+# As command line: 
+# Freed command array.
+#### Test 25
+# Parsing: " a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 26
+# Parsing: "  a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 27
+# Parsing: "a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 28
+# Parsing: " a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 29
+# Parsing: "  a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 30
+# Parsing: "  a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 31
+# Parsing: "a bc  "
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 32
+# Parsing: " a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 33
+# Parsing: "a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 34
+# Parsing: " a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 35
+# Parsing: "  a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 36
+# Parsing: "a  bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 37
+# Parsing: " a  bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 38
+# Parsing: "  a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 39
+# Parsing: "  a  bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 40
+# Parsing: "bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 41
+# Parsing: " bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 42
+# Parsing: "bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 43
+# Parsing: " bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 44
+# Parsing: "  bc a"
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 45
+# Parsing: "bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 46
+# Parsing: " bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 47
+# Parsing: "  bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 48
+# Parsing: "  bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 49
+# Parsing: "bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 50
+# Parsing: " bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 51
+# Parsing: "bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 52
+# Parsing: " bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 53
+# Parsing: "  bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 54
+# Parsing: "bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 55
+# Parsing: " bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 56
+# Parsing: "  bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 57
+# Parsing: "  bc  a  "
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "a"
+  - "b"
+end
+a b 
+command
+  - "a"
+  - "b"
+end
+a b 
+command
+  - "a"
+  - "b"
+end
+a b 
+command
+  - "a"
+  - "b"
+end
+a b 
+command
+  - "a"
+  - "b"
+end
+a b 
+command
+  - "emacs"
+end
+emacs 
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 58
+# Parsing: "a b"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 59
+# Parsing: " a b"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 60
+# Parsing: "a b "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 61
+# Parsing: " a b "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 62
+# Parsing: "  a  b  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 63
+# Parsing: "emacs &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 64
+command
+  - "emacs"
+end
+emacs 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "a"
+  - "b"
+end
+a b 
+# Parsing: "emacs&   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 65
+# Parsing: "sleep 10&"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 66
+# Parsing: "sleep 10 &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 67
+# Parsing: "sleep 10  &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 68
+# Parsing: "sleep 10& "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 69
+# Parsing: "sleep 10 & "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 70
+# Parsing: "sleep 10  & "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 71
+# Parsing: "sleep 10&   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 72
+# Parsing: "sleep 10 &   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 73
+# Parsing: "sleep 10  &   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 74
+# Parsing: "  a  b  &  "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 75
+# Parsing: "&uhoh"
+# Invalid command.
+#### Test 76
+# Parsing: "   &uhoh"
+# Invalid command.
+#### Test 77
+# Parsing: "&uhoh   "
+# Invalid command.
+#### Test 78
+# Parsing: "  &uhoh  "
+# Invalid command.
+#### Test 79
+# Parsing: "  & uh oh"
+# Invalid command.
+command
+  - "Hello"
+  - "world!"
+  - "Please"
+  - "parse"
+  - "me."
+end
+Hello world! Please parse me. 
+command
+  - "emacs"
+end
+emacs 
+command
+  - "emacs"
+end
+emacs 
+command
+  - "emacs"
+end
+emacs 
+#### Test 80
+# Parsing: "  & uh oh  "
+# Invalid command.
+#### Test 81
+# Parsing: "  &   uh oh  "
+# Invalid command.
+#### Test 82
+# Parsing: "uh&oh"
+# Invalid command.
+#### Test 83
+# Parsing: "uh& oh"
+# Invalid command.
+#### Test 84
+# Parsing: "uh & oh"
+# Invalid command.
+#### Test 85
+# Parsing: "uh &oh"
+# Invalid command.
+#### Test 86
+# Parsing: "  uh&oh"
+# Invalid command.
+#### Test 87
+# Parsing: "  uh& oh"
+# Invalid command.
+#### Test 88
+# Parsing: "  uh & oh"
+# Invalid command.
+#### Test 89
+# Parsing: "  uh &oh"
+# Invalid command.
+#### Test 90
+# Parsing: "  uh&oh  "
+# Invalid command.
+#### Test 91
+# Parsing: "  uh& oh  "
+# Invalid command.
+#### Test 92
+# Parsing: "  uh & oh  "
+# Invalid command.
+#### Test 93
+# Parsing: "  uh &oh  "
+# Invalid command.
+#### Test 94
+# Parsing: "uh& &oh"
+# Invalid command.
+#### Test 95
+# Parsing: "uh oh&&"
+# Invalid command.
+#### Test 96
+# Parsing: "uh oh &&"
+# Invalid command.
+#### Test 97
+# Parsing: "uh oh & &"
+# Invalid command.
+#### Test 98
+# Parsing: "uh oh &  &"
+# Invalid command.
+#### Test 99
+# Parsing: "uh oh &  &  "
+# Invalid command.
+######## Running 100 parser tests with heap sources
+#### Test 0
+# Parsing: "Hello world!  Please parse    me."
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 1
+# Parsing: "emacs"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 2
+# Parsing: "emacs "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 3
+# Parsing: " emacs"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 4
+# Parsing: " emacs "
+command
+  - "emacs"
+end
+emacs 
+command
+  - "cat"
+  - "shell.c"
+  - "command.h"
+  - "Makefile"
+end
+cat shell.c command.h Makefile 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 5
+# Parsing: "cat shell.c command.h Makefile"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 6
+# Parsing: "   echo hello world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 7
+# Parsing: "   echo hello   world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 8
+# Parsing: "   echo   hello world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 9
+# Parsing: "   echo   hello   world"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 10
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+  - "echo"
+  - "hello"
+  - "world"
+end
+echo hello world 
+command
+end
+
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+end
+a 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+# Parsing: "   echo hello   world   "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 11
+# Parsing: "echo   hello world  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 12
+# Parsing: ""
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 13
+# Parsing: "a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 14
+# Parsing: " a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 15
+# Parsing: "a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 16
+# Parsing: " a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 17
+# Parsing: "  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 18
+# Parsing: "a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 19
+# Parsing: " a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 20
+# Parsing: "  a "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 21
+# Parsing: "  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 22
+# Parsing: "a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 23
+# Parsing: " a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 24
+# Parsing: "a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 25
+# Parsing: " a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 26
+# Parsing: "  a bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 27
+# Parsing: "a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 28
+# Parsing: " a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 29
+# Parsing: "  a bc"
+# Parsed foreground command:
+# As command line: 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+# Freed command array.
+#### Test 30
+# Parsing: "  a  bc"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 31
+# Parsing: "a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 32
+# Parsing: " a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 33
+# Parsing: "a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 34
+# Parsing: " a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 35
+# Parsing: "  a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 36
+# Parsing: "a  bc  "
+# Parsed foreground command:
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "a"
+  - "bc"
+end
+a bc 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+# As command line: 
+# Freed command array.
+#### Test 37
+# Parsing: " a  bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 38
+# Parsing: "  a bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 39
+# Parsing: "  a  bc  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 40
+# Parsing: "bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 41
+# Parsing: " bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 42
+# Parsing: "bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 43
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+# Parsing: " bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 44
+# Parsing: "  bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 45
+# Parsing: "bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 46
+# Parsing: " bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 47
+# Parsing: "  bc a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 48
+# Parsing: "  bc  a"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 49
+# Parsing: "bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 50
+# Parsing: " bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 51
+# Parsing: "bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 52
+# Parsing: " bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "bc"
+  - "a"
+end
+bc a 
+command
+  - "a"
+  - "b"
+end
+a b 
+command
+  - "a"
+  - "b"
+end
+a b 
+command
+  - "a"
+  - "b"
+end
+a b 
+command
+  - "a"
+  - "b"
+end
+a b 
+command
+  - "a"
+  - "b"
+end
+a b 
+command
+  - "emacs"
+end
+emacs 
+command
+  - "emacs"
+end
+emacs 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+#### Test 53
+# Parsing: "  bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 54
+# Parsing: "bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 55
+# Parsing: " bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 56
+# Parsing: "  bc a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 57
+# Parsing: "  bc  a  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 58
+# Parsing: "a b"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 59
+# Parsing: " a b"
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 60
+# Parsing: "a b "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 61
+# Parsing: " a b "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 62
+# Parsing: "  a  b  "
+# Parsed foreground command:
+# As command line: 
+# Freed command array.
+#### Test 63
+# Parsing: "emacs &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 64
+# Parsing: "emacs&   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 65
+# Parsing: "sleep 10&"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+#### Test 66
+# Parsing: "sleep 10 &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 67
+# Parsing: "sleep 10  &"
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 68
+# Parsing: "sleep 10& "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 69
+# Parsing: "sleep 10 & "
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 70
+# Parsing: "sleep 10  & "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 71
+# Parsing: "sleep 10&   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 72
+# Parsing: "sleep 10 &   "
+# Parsed background command:
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "sleep"
+  - "10"
+end
+sleep 10 
+command
+  - "a"
+  - "b"
+end
+a b 
+# As command line: 
+# Freed command array.
+#### Test 73
+# Parsing: "sleep 10  &   "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 74
+# Parsing: "  a  b  &  "
+# Parsed background command:
+# As command line: 
+# Freed command array.
+#### Test 75
+# Parsing: "&uhoh"
+# Invalid command.
+#### Test 76
+# Parsing: "   &uhoh"
+# Invalid command.
+#### Test 77
+# Parsing: "&uhoh   "
+# Invalid command.
+#### Test 78
+# Parsing: "  &uhoh  "
+# Invalid command.
+#### Test 79
+# Parsing: "  & uh oh"
+# Invalid command.
+#### Test 80
+# Parsing: "  & uh oh  "
+# Invalid command.
+#### Test 81
+# Parsing: "  &   uh oh  "
+# Invalid command.
+#### Test 82
+# Parsing: "uh&oh"
+# Invalid command.
+#### Test 83
+# Parsing: "uh& oh"
+# Invalid command.
+#### Test 84
+# Parsing: "uh & oh"
+# Invalid command.
+#### Test 85
+# Parsing: "uh &oh"
+# Invalid command.
+#### Test 86
+# Parsing: "  uh&oh"
+# Invalid command.
+#### Test 87
+# Parsing: "  uh& oh"
+# Invalid command.
+#### Test 88
+# Parsing: "  uh & oh"
+# Invalid command.
+#### Test 89
+# Parsing: "  uh &oh"
+# Invalid command.
+#### Test 90
+# Parsing: "  uh&oh  "
+# Invalid command.
+#### Test 91
+# Parsing: "  uh& oh  "
+# Invalid command.
+#### Test 92
+# Parsing: "  uh & oh  "
+# Invalid command.
+#### Test 93
+# Parsing: "  uh &oh  "
+# Invalid command.
+#### Test 94
+# Parsing: "uh& &oh"
+# Invalid command.
+#### Test 95
+# Parsing: "uh oh&&"
+# Invalid command.
+#### Test 96
+# Parsing: "uh oh &&"
+# Invalid command.
+#### Test 97
+# Parsing: "uh oh & &"
+# Invalid command.
+#### Test 98
+# Parsing: "uh oh &  &"
+# Invalid command.
+#### Test 99
+# Parsing: "uh oh &  &  "
+# Invalid command.
+==26622== 
+==26622== HEAP SUMMARY:
+==26622==     in use at exit: 0 bytes in 0 blocks
+==26622==   total heap usage: 538 allocs, 538 frees, 5,443 bytes allocated
+==26622== 
+==26622== All heap blocks were freed -- no leaks are possible
+==26622== 
+==26622== For lists of detected and suppressed errors, rerun with: -s
+==26622== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
++----------------------------------------------------------------------+
+| style.out                                                            |
++----------------------------------------------------------------------+
+

@@ -1,0 +1,194 @@
++----------------------------------------------------------------------+
+| cs240f20 Bits (bits) Grade Summary                                   |
++----------------------------------------------------------------------+
+  Implementation descriptions: 24 / 28
+    fitsBits: 7 / 7
+      Description clearly explains how/why the operations combine
+      to implement the specification, via relevant laws/properties.
+    logicalShift: 7 / 7
+      Description clearly explains how/why the operations combine
+      to implement the specification, via relevant laws/properties.
+    addOK: 7 / 7
+      Description clearly explains how/why the operations combine
+      to implement the specification, via relevant laws/properties.
+    bang: 3 / 7
+      Description explains a relevant property of the implementation
+      or specification, but does not clearly establish a connection
+      showing how/why the operations combine to implement the specification.
+      I think the idea is hidden somewhere in there, but this needs revision to make the connection clear.
+  Correctness and performance: 72.0 / 72
+    = driver.pl score scaled by 1.5.
+    See more in section "bits.out" below.
++----------------------------------------------------------------------+
+| TOTAL: 96.0 / 100                                                    |
++----------------------------------------------------------------------+
+
++----------------------------------------------------------------------+
+| meta.out                                                             |
++----------------------------------------------------------------------+
+Bits (bits) submission by:
+  sk1: Shreya Kochar <sk1@wellesley.edu>
+
+Commit log as of this report:
+
+commit 84fa4c1d6b5cd5c817974b33e5ba7816db28b2e2
+Author: Ben Wood <benjamin.wood@wellesley.edu>
+Date:   Fri Sep 18 01:18:36 2020 -0400
+
+    Feedback by course staff
+
+commit db9318bae7e8ab5fb89bbf80b8224f99a41ad4b8
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 8 15:26:22 2020 -0400
+
+    signature by sk1
+
+commit 8bd58202c2c18ac2747e92ba145d169db72bf6e7
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 8 15:26:10 2020 -0400
+
+    Final comments for real
+
+commit c246384cec4de901ef66ca6da8dc6897f440901a
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 8 15:16:49 2020 -0400
+
+    signature by sk1
+
+commit f5a23e5154eec0cc6cf23239d3b8d5e5bdb8e73e
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 8 15:16:46 2020 -0400
+
+    responses by sk1
+
+commit f32d21fb159631ce8d24385c1ba6caa3ccdf4923
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 8 15:16:24 2020 -0400
+
+    Final comments
+
+commit d0a381c59086058a694e7ec072e0362afeaa6895
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 8 00:29:46 2020 -0400
+
+    signature by sk1
+
+commit 6c009db1dae1ccf655cc25b98ee7b0bcc458c566
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 8 00:29:36 2020 -0400
+
+    responses by sk1
+
+commit 7c000fdcb49c840c60b40a8365b307d32a335ae1
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Tue Sep 8 00:28:03 2020 -0400
+
+    MESSAGE
+
+commit a5fc2838159f7866eafe6bdf3b6dddb9f20b2754
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Mon Sep 7 01:10:27 2020 -0400
+
+    signature by sk1
+
+commit 860ed1175722114574a378f5c93743c69647699c
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Mon Sep 7 01:10:23 2020 -0400
+
+    responses by sk1
+
+commit f0b92e24ffd64385fb182a0cc6f5208dfac4ae48
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Mon Sep 7 01:09:13 2020 -0400
+
+    Version1
+
+commit 612a8ba3d58ceed9b20a86ca1e47e6317fde7168
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sat Sep 5 18:02:01 2020 -0400
+
+    sk1 started team sk1
+
+commit 76a658a7352ef387582d2e2a19455a6e65f26b7d
+Author: Ben Wood <benjamin.wood@wellesley.edu>
+Date:   Wed Sep 2 20:53:27 2020 -0400
+
+    Starter code for Bits
+
+
+
++----------------------------------------------------------------------+
+| bits.out                                                             |
++----------------------------------------------------------------------+
+gcc -O0 -g -lm -c btest.c -o btest.o
+gcc -O0 -g -lm -c decl.c -o decl.o
+gcc -O0 -g -lm -c tests.c -o tests.o
+gcc -Wall -O0 -g -lm -o btest btest.o decl.o tests.o bits.c
+gcc -O0 -g -o fshow fshow.c
+gcc -O0 -g -o ishow ishow.c
+
+$ ./btest
+Score	Rating	Errors	Function
+ 1	1	0	bitAnd
+ 1	1	0	bitXor
+ 1	1	0	thirdBits
+ 2	2	0	fitsBits
+ 2	2	0	sign
+ 2	2	0	getByte
+ 3	3	0	logicalShift
+ 3	3	0	addOK
+ 4	4	0	bang
+ 3	3	0	conditional
+ 4	4	0	isPower2
+Total points: 26/26
+
+$ ./driver.pl
+1. Running './dlc -z' to identify coding rules violations.
+/usr/include/stdc-predef.h:1: Warning: Non-includable file <command-line> included from includable file /usr/include/stdc-predef.h.
+
+Compilation Successful (1 warning)
+
+2. Compiling and running './btest -g' to determine correctness score.
+rm -rf *.o btest fshow ishow *~ *.dSYM
+make btest
+make[1]: Entering directory `/var/tmp/datalab.cs240.16936'
+gcc -O0 -g -lm -c btest.c -o btest.o
+gcc -O0 -g -lm -c decl.c -o decl.o
+gcc -O0 -g -lm -c tests.c -o tests.o
+gcc -Wall -O0 -g -lm -o btest btest.o decl.o tests.o bits.c
+make[1]: Leaving directory `/var/tmp/datalab.cs240.16936'
+
+3. Running './dlc -Z' to identify operator count violations.
+/usr/include/stdc-predef.h:1: Warning: Non-includable file <command-line> included from includable file /usr/include/stdc-predef.h.
+
+Compilation Successful (1 warning)
+
+4. Compiling and running './btest -g -r 2' to determine performance score.
+rm -rf *.o btest fshow ishow *~ *.dSYM
+make btest
+make[1]: Entering directory `/var/tmp/datalab.cs240.16936'
+gcc -O0 -g -lm -c btest.c -o btest.o
+gcc -O0 -g -lm -c decl.c -o decl.o
+gcc -O0 -g -lm -c tests.c -o tests.o
+gcc -Wall -O0 -g -lm -o btest btest.o decl.o tests.o bits.c
+make[1]: Leaving directory `/var/tmp/datalab.cs240.16936'
+
+
+5. Running './dlc -e' to get operator count of each function.
+
+Correctness Results	Perf Results
+Points	Rating	Errors	Points	Ops	Puzzle
+1	1	0	2	4	bitAnd
+1	1	0	2	8	bitXor
+1	1	0	2	8	thirdBits
+2	2	0	2	10	fitsBits
+2	2	0	2	4	sign
+2	2	0	2	3	getByte
+3	3	0	2	6	logicalShift
+3	3	0	2	14	addOK
+4	4	0	2	5	bang
+3	3	0	2	7	conditional
+4	4	0	2	10	isPower2
+
+Score = 48/48 [26/26 Corr + 22/22 Perf] (79 total operators)
+

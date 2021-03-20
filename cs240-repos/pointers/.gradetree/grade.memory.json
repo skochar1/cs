@@ -1,0 +1,42 @@
+{
+    "title": "Memory Safety and Efficiency",
+    "links": [
+        ".gradetree/memory.out"
+    ],
+    "subgrades": [
+        {
+            "title": "memory safety (no valgrind errors?) ",
+            "links": [],
+            "notes": [
+                "memory errors  : 8"
+            ],
+            "points": [
+                3,
+                10
+            ]
+        },
+        {
+            "title": "efficient allocation (minimal size?)",
+            "links": [],
+            "notes": [
+                "bytes allocated: 7291"
+            ],
+            "points": [
+                5,
+                5
+            ]
+        },
+        {
+            "title": "efficient reclamation (no leaks?)   ",
+            "links": [],
+            "notes": [
+                "direct leaks   : 198",
+                "indirect leaks : 0"
+            ],
+            "points": [
+                3,
+                5
+            ]
+        }
+    ]
+}

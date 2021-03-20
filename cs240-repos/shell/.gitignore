@@ -1,0 +1,12 @@
+command_test
+shell
+.*_history
+*~
+\#*
+.\#*
+.DS_Store
+*.dSYM
+*.o
+vgcore.*
+.nfs*
+.vscode

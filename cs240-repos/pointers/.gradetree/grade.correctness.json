@@ -1,0 +1,40 @@
+{
+    "title": "Functional Correctness",
+    "links": [
+        ".gradetree/correctness.out"
+    ],
+    "subgrades": [
+        {
+            "title": "validity",
+            "links": [],
+            "points": [
+                8,
+                10
+            ]
+        },
+        {
+            "title": "status",
+            "links": [],
+            "points": [
+                4,
+                5
+            ]
+        },
+        {
+            "title": "ampersand",
+            "links": [],
+            "points": [
+                5,
+                5
+            ]
+        },
+        {
+            "title": "structure",
+            "links": [],
+            "points": [
+                28,
+                30
+            ]
+        }
+    ]
+}

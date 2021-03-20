@@ -1,0 +1,185 @@
+{
+    "title": "cs240f20 x86 (x86) Grade Summary",
+    "links": [],
+    "subgrades": [
+        {
+            "title": "Phase Descriptions",
+            "links": [],
+            "subgrades": [
+                {
+                    "title": "Phase 2",
+                    "links": [],
+                    "notes": [
+                        "Great mid- and low-level description. Try to extract a high-level description as well: \"reads 6 integers and uses a loop to determine if they are a geometric sequence of the form...\""
+                    ],
+                    "subgrades": [
+                        {
+                            "title": "Phase 2 high-level summary",
+                            "links": [],
+                            "notes": [
+                                "Captures the rough idea of the high-level computation, but",
+                                "clarity or completeness could be improved."
+                            ],
+                            "points": [
+                                4.5,
+                                6
+                            ]
+                        },
+                        {
+                            "title": "Phase 2 low-level operations",
+                            "links": [],
+                            "notes": [
+                                "Clearly identifies relevant operations in the low-level computation",
+                                "that are key to the high-level computation."
+                            ],
+                            "points": [
+                                3,
+                                3
+                            ]
+                        },
+                        {
+                            "title": "Phase 2 connection",
+                            "links": [],
+                            "notes": [
+                                "Clearly explains connection of low-level operations to high-level computation."
+                            ],
+                            "points": [
+                                6,
+                                6
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Phase 5",
+                    "links": [],
+                    "notes": [
+                        "Good mid-to-level description. Try to extract a succint high-level description as well."
+                    ],
+                    "subgrades": [
+                        {
+                            "title": "Phase 5 high-level summary",
+                            "links": [],
+                            "notes": [
+                                "Touches on aspects of high-level computation, but does not",
+                                "capture the whole."
+                            ],
+                            "points": [
+                                1.0,
+                                2
+                            ]
+                        },
+                        {
+                            "title": "Phase 5 low-level operations",
+                            "links": [],
+                            "notes": [
+                                "Clearly identifies relevant operations in the low-level computation",
+                                "that are key to the high-level computation."
+                            ],
+                            "points": [
+                                1,
+                                1
+                            ]
+                        },
+                        {
+                            "title": "Phase 5 connection",
+                            "links": [],
+                            "notes": [
+                                "Explains some connection of relevant low-level operations to high-level computation,",
+                                "or clearly explains connection of moderately important low-level operations."
+                            ],
+                            "points": [
+                                1.5,
+                                2
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Phase Inputs",
+            "links": [],
+            "subgrades": [
+                {
+                    "title": "Phase 1",
+                    "links": [
+                        "phase1.out"
+                    ],
+                    "notes": [
+                        "Passed! :)"
+                    ],
+                    "points": [
+                        5,
+                        5
+                    ]
+                },
+                {
+                    "title": "Phase 2",
+                    "links": [
+                        "phase2.out"
+                    ],
+                    "notes": [
+                        "Passed! :)"
+                    ],
+                    "points": [
+                        20,
+                        20
+                    ]
+                },
+                {
+                    "title": "Phase 3",
+                    "links": [
+                        "phase3.out"
+                    ],
+                    "notes": [
+                        "Passed! :)"
+                    ],
+                    "points": [
+                        20,
+                        20
+                    ]
+                },
+                {
+                    "title": "Phase 4",
+                    "links": [
+                        "phase4.out"
+                    ],
+                    "notes": [
+                        "Passed! :)"
+                    ],
+                    "points": [
+                        20,
+                        20
+                    ]
+                },
+                {
+                    "title": "Phase 5",
+                    "links": [
+                        "phase5.out"
+                    ],
+                    "notes": [
+                        "Passed! :)"
+                    ],
+                    "points": [
+                        10,
+                        10
+                    ]
+                },
+                {
+                    "title": "Phase 6",
+                    "links": [
+                        "phase6.out"
+                    ],
+                    "notes": [
+                        "Passed! :)"
+                    ],
+                    "points": [
+                        5,
+                        5
+                    ]
+                }
+            ]
+        }
+    ]
+}

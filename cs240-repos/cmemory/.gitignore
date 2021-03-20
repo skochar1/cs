@@ -1,0 +1,10 @@
+*~
+*.o
+*.dSYM
+.DS_Store
+
+main[0-9]
+mystery[0-9]
+tour
+ptest
+practice

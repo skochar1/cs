@@ -1,0 +1,14 @@
+# This file tells Git to ignore certain files (i.e., never add/commit
+# them to the repository).
+#
+# In general, it is good version-control style to avoid committing
+# files that are automatically generated from source code files in the
+# repository.
+
+# Emacs temporary auto-backup files.
+*~
+*\#*
+
+# The compiled executable can always be regenerated from the source
+code, so do not include it in the repository.
+hello

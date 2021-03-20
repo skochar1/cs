@@ -1,0 +1,84 @@
+{
+    "title": "Phase Inputs",
+    "links": [],
+    "subgrades": [
+        {
+            "title": "Phase 1",
+            "links": [
+                "phase1.out"
+            ],
+            "notes": [
+                "Passed! :)"
+            ],
+            "points": [
+                5,
+                5
+            ]
+        },
+        {
+            "title": "Phase 2",
+            "links": [
+                "phase2.out"
+            ],
+            "notes": [
+                "Passed! :)"
+            ],
+            "points": [
+                20,
+                20
+            ]
+        },
+        {
+            "title": "Phase 3",
+            "links": [
+                "phase3.out"
+            ],
+            "notes": [
+                "Passed! :)"
+            ],
+            "points": [
+                20,
+                20
+            ]
+        },
+        {
+            "title": "Phase 4",
+            "links": [
+                "phase4.out"
+            ],
+            "notes": [
+                "Passed! :)"
+            ],
+            "points": [
+                20,
+                20
+            ]
+        },
+        {
+            "title": "Phase 5",
+            "links": [
+                "phase5.out"
+            ],
+            "notes": [
+                "Passed! :)"
+            ],
+            "points": [
+                10,
+                10
+            ]
+        },
+        {
+            "title": "Phase 6",
+            "links": [
+                "phase6.out"
+            ],
+            "notes": [
+                "Passed! :)"
+            ],
+            "points": [
+                5,
+                5
+            ]
+        }
+    ]
+}

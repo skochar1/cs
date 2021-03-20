@@ -1,0 +1,44 @@
+{
+    "title": "Design, Style, Documentation",
+    "links": [],
+    "subgrades": [
+        {
+            "title": "Idiomatic pointer style",
+            "links": [
+                ".gradetree/style.out"
+            ],
+            "notes": [
+                "array   index expressions (-1 per 1):   0",
+                "pointer index expressions (-1 per 1-2): 0"
+            ],
+            "points": [
+                10,
+                10
+            ]
+        },
+        {
+            "title": "Structure and Design",
+            "links": [],
+            "notes": [
+                "Good control flow structure and organization, with some opportunities",
+                "for restructuring to improve simplicity or clarity.",
+                "Using the numWords helper is nice, but some logic that we would hope could be handled there is not, such as foreground/background status. There are also a few special cases (empty foreground command, empty background command) that could be handled more generally. Overall, this helper function and its interaction with command_parse could use some redesign."
+            ],
+            "points": [
+                8,
+                10
+            ]
+        },
+        {
+            "title": "Documentation",
+            "links": [],
+            "notes": [
+                "Clear, complete, and concise documentation."
+            ],
+            "points": [
+                10,
+                10
+            ]
+        }
+    ]
+}

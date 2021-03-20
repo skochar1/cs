@@ -1,0 +1,145 @@
+Write a succinct paragraph or two for each phase, describing:
+- What the phase is computing with your input at a high level of
+  abstraction.
+- Some key features of the x86 code that correspond to the high-level
+  computation.
+
+Describe at a high level as if you are summarizing whatever C code
+compiled to this assembly/machine code.  (Feel free to write C to
+describe what is computed.) Do mention a couple assembly details that
+figure prominently in how the low-level x86 code implements the
+high-level structure, but do not give a line-by-line run-down of the
+assembly code.
+
+**************** Phase 1
+Phase 1 essentially compares our input string, some phrase, to the “secret phrase” using the 
+<strings_not_equal> function. Our input is stored in %rdi since it is the first parameter and 
+this input is compared to the secret word which is stored in %esi, also known as the lower half 
+of %rsi. The <strings_not_equal> function is called store’s it’s output into %eax. If the strings 
+are equal, string_not_equal stores 0 into %rax, the return register, and we jump to line 23 which 
+deallocates the stack frame and safely returns. If the strings are NOT equal, we will trigger the 
+alarm. 
+
+**************** Phase 2
+Phase 2 takes in 6 numbers and calls <read_six_numbers> to format and add those 6 numbers into our 
+stack. Once the 6 input numbers are added to the stack, phase_2 first makes sure that the first input 
+number is 1, as shown by: 
+    cmpl   $0x1,(%rsp) 
+If the first input number is NOT 1, the alarm is tripped. If it is, we continue into our “loop,” 
+which consists of incrementing %ebx and %eax by 1, multiplying %eax by the number before the current 
+one one we’re looking at (the address of the number stored in %rbp), and comparing the newly multiplied value stored 
+in %eax to the contents at %rbp. By working through each iteration, we found that 1 2 6 24 120 720 
+passed. This ends up being the geometric sequence of a(n-1)*n, where the nth term equals the previous 
+term times n. We follow this pattern. We increment %rbp:
+     <+46>:    add    $0x4,%rbp
+which is acting as our “stack pointer”, which will point to each of the 6 numbers we stored from 
+<read_six_numbers> as we go through the loop. We continue to increment %edx, starting at 2, and move 
+up all the way to 6, in which we multiply the number before the current number %rbp is holding the 
+address to by %eax, store that value in %eax, and then compare %eax to %rbp to make sure that they are equal (if they 
+are not, we are trip alarm). We continue until we reach the end of the loop, which stops at 6 iterations, 
+as shown by:  
+    <+50>:    cmp    $0x6,%ebx. 
+Once we reach the end of the loop, we can clean the stack and safely complete phase 2! 
+
+**************** Phase 3
+We know the input will be two integers because when we check this line:
+    0x00000000004010fb <+14>:    mov    $0x402749,%esi
+We see that a memory address has been moved onto the stack, which is a hint that the inputs are being 
+placed onto the stack. Thus, we check the line and get this: 
+    (gdb) x /s 0x402749
+    0x402749:       "%d %d”
+two integers separated by a space.
+This is a switch-type operation, meaning that there are several cases listed below. It seems that in 
+our case, the only case listed that doesn’t end up tripping the alarm is case 0: 112, giving us the 
+password 0 112. This is because, while there are several options on the switch, only one case meets 
+this requirement:
+    0x0000000000401168 <+123>:   cmp    0x8(%rsp),%eax 
+If (eax != *(rsp + 8)) bomb explodes. We know that rsp represents the stack pointer, so this indicates 
+that eax must have the value of whatever is stored in the second space of the stack. 0 112 is only 
+option that is second on the stack, so this is the only option that works
+
+**************** Phase 4
+The idea for phase 4 is essentially that func4 is a recursive function. In this, we essentially end up 
+seeing these 3 lines:
+   0x000000000040118d <+21>:    lea    0x0(,%rax,8),%edx  // edx = %rax * 8
+   0x0000000000401194 <+28>:    sub    %eax,%edx          // rdx = rdx - rax = rax * 8 - rax = rax*7
+   0x0000000000401196 <+30>:    mov    %edx,%eax          // rax = edx
+We see that rax (represented by its lower byte register eax), which gets a value of 1 in the base case 
+of the recursive function func4, is multiplied by 7 times in each recursive call. 11764910, or 0x1cb91, 
+is the value that func4 needs to return in the end to successfully avoid tripping the alarm. 
+11764910 = 7^6. Thus, 6 was the input value to successfully allow the recursion to return 7^6, which
+is how we avoided tripping the alarm and moving to phase 5.
+
+**************** Phase 5
+Phase 5 takes two numbers, let’s say x and y, in which x is the amount of times we will iterate through 
+this “loop” in which we will explain later, and y is the sum of the numbers we iterate through. 
+We found that phase 5 takes 2 numbers because scanf is called: callq  0x400c80 <__isoc99_sscanf@plt>, 
+and the input string is %d %d, which is two integers. We also knew that the “secret” array was stored 
+somewhere before the loop started, and so we tried x /s 0x402220 which gave us: 
+    0x402220 <array.3153>:  "\n"
+This was an indicator that an array was stored here. We tested a different gdb command: (
+    gdb) x /64b 0x402220 
+and this gave us our full array of: 
+    [10, 2, 14, 7, 8, 12, 15, 11, 0, 4, 1, 13, 3, 9, 6, 5] 
+Before we even enter a loop, we first check if we have more than one input and if our first input is 
+less than 15. Once these two cases pass, we enter a “loop” in which we iterate through the array, where 
+%rax is the index reg (starting at our first input number, 11) and we scale by 4 to access a number in 
+the array. 
+    0x0000000000401227 <+70>:    mov    0x402220(,%rax,4),%eax 
+From there, we go through a loop and use the number we just indexed as our next index in the loop. Once 
+we hit 15, we jump out of the loop. Essentially we loop through 11 times; this was also revealed by:  
+	cmp    $0xb,%edx // if edx != 11 bomb explodes
+We add the contents at each index as we go iterate through, and the sum ends up being 82, our second 
+input number.  
+	This is what is happening in the loop in reverse order:
+        15 = numArray[6]
+        6 = numArray [14]  
+        14 = numArray[2]
+        2 = numArray [1]
+        1 = numArray[10]
+        10 = numArray[0]
+        0 = numArray[8
+        8 = numArray[4]
+        4 = numArray[9]
+        9 = numArray[13]
+        eax = 13, at index 11 ( our starting point)
+This was how we ended up finishing this phase.
+
+**************** Phase 6
+There are two helper functions that are instrumental in carrying out phase 6. They are strtol and fun6. 
+Strtol has the following format:
+    long int strtol(const char *str, char **endptr, int base)
+The first argument is our input string (passcode), which goes into %rdi. The second argument is 0 in 
+%rsi (node number that we start at). The third argument is 10 (the base type of the returned long - in 
+our case, it will be 10, meaning that we are expecting to convert the string to a decimal type number), 
+stored in %rdx. Now, we can use our number for iterative purposes. Our input was the value stored in 
+some node in our linked list -- however, it is our job to go through fun6 to determine exactly which one 
+phase_6 wants. This is our linked list prior to the second helper function, fun6, running its operations:
+
+    (gdb) x /20xg 0x603320
+    0x603320 <node0>:       0x0000000000000000      0x0000000000603330
+    0x603330 <node1>:       0x00000001000001e4      0x0000000000603340
+    0x603340 <node2>:       0x00000002000000e3      0x0000000000603350
+    0x603350 <node3>:       0x00000003000001a2      0x0000000000603360
+    0x603360 <node4>:       0x000000040000023d      0x0000000000603370
+    0x603370 <node5>:       0x00000005000001bf      0x0000000000603380
+    0x603380 <node6>:       0x00000006000002e1      0x0000000000603390
+    0x603390 <node7>:       0x00000007000000ba      0x00000000006033a0
+    0x6033a0 <node8>:       0x000000080000003b      0x00000000006033b0
+    0x6033b0 <node9>:       0x000000090000036a      0x0000000000000000
+
+Here, we can see each node’s value and the address of the next node that it contains, thus linking 
+every node together. Each node is 16 bytes: 8 bytes for the value, 8 bytes for the address of the next 
+node. 
+
+fun6 is essentially a large loop with several cases that involve shifting around nodes and scrambling 
+our linked list. The loop ends when we hit a register with the next address value of 0, meaning that 
+the linked list has reached its end. After we exit fun6, we get a new value of %rax, which undergoes 
+the following process 4 times: 
+    mov    0x8(%rax),%rax
+Which is compared to the code’s constant %ecx, makes (%rax) == ecx and disarms the alarm. Thus, the 
+goal of using fun6 was to reverse engineer the loop, and figure out what input we had to give to 
+phase_6 that would allow fun6 to return the appropriate value of %rax that, when manipulated as per 
+the code, would disarm the alarm and complete the phase.
+
+

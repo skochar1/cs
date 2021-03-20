@@ -1,0 +1,56 @@
+{
+    "title": "Implementation descriptions",
+    "links": [],
+    "subgrades": [
+        {
+            "title": "fitsBits",
+            "links": [],
+            "notes": [
+                "Description clearly explains how/why the operations combine",
+                "to implement the specification, via relevant laws/properties."
+            ],
+            "points": [
+                7,
+                7
+            ]
+        },
+        {
+            "title": "logicalShift",
+            "links": [],
+            "notes": [
+                "Description clearly explains how/why the operations combine",
+                "to implement the specification, via relevant laws/properties."
+            ],
+            "points": [
+                7,
+                7
+            ]
+        },
+        {
+            "title": "addOK",
+            "links": [],
+            "notes": [
+                "Description clearly explains how/why the operations combine",
+                "to implement the specification, via relevant laws/properties."
+            ],
+            "points": [
+                7,
+                7
+            ]
+        },
+        {
+            "title": "bang",
+            "links": [],
+            "notes": [
+                "Description explains a relevant property of the implementation",
+                "or specification, but does not clearly establish a connection",
+                "showing how/why the operations combine to implement the specification.",
+                "I think the idea is hidden somewhere in there, but this needs revision to make the connection clear."
+            ],
+            "points": [
+                3,
+                7
+            ]
+        }
+    ]
+}

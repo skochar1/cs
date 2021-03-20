@@ -1,0 +1,210 @@
+Answer description questions succintly here. Please leave the provided
+text in place and add your answers after each question.
+
+- Many of these questions request only a couple words or an
+  instruction listing from your disassembled code.
+
+- Prose answers should focus on the general meaning of code and data
+  rather than specific numbers or addresses (e.g., "return address",
+  not "0x4067c5").
+
+
+EXPLOIT 1:
+
+a. During a successfully exploited execution of the `laptop`, one
+   crucial control-flow instruction is affected by your exploit string
+   data in a way that causes it to choose a different next instruction
+   to execute compared to normal execution (in the absence of buffer
+   overflow), and allow the attack to begin executing different code
+   than usual. What is the instruction address and assembly code for
+   this instruction in the `laptop` executable?
+
+    0x0000000000400e6a <+122>:   retq
+
+b. What part of your exploit string (described as a byte offset from
+   the start of the string) causes the instruction from (a) to behave
+   differently than normal?  Why?  (Write a sentence or two.)
+
+    The ret instruction cases the exploit to occur. It uses the last
+    8 bytes in my string, which overwrite the old return address, to 
+    instead call smoke.
+
+c. What instruction executes next after the instruction in (a) in a
+   normal execution?
+
+    The line of test after the one that calls getbuf executes:
+    0x0000000000401013 <+35>:    cmp    $0x28,%rax
+
+d. What instruction executes next after the instruction in (a) in your
+   exploited execution?
+
+    The first line of smoke executes:
+    0x0000000000400f20 <+0>:     sub    $0x8,%rsp
+
+
+EXPLOIT 2:
+
+a. The retq instruction in getbuf uses one word of your exploit string
+   as a return address. Describe how each subsequent word of the
+   exploit string is interpreted by fizz, including how it finds your
+   cookie as `val`, and why each of these words must be at its
+   position to allow fizz to make this interpretation.
+
+    We overwrite the old return address with the address of fizz in our 
+    exploit string. When we put fizz's address in the place of the return address, 
+    fizz is popped off the call stack and then continues its execution. The function 
+    fizz's first few lines tell us to do the following:
+
+    0x0000000000400f50 <+0>:     sub    $0x8,%rsp
+    0x0000000000400f54 <+4>:     movl   $0x1,0x201166(%rip)        # 0x6020c4 <check_level>
+    0x0000000000400f5e <+14>:    mov    0x10(%rsp),%rsi
+
+    After the return instruction essentially pops off fizz off the stack, the popping of 
+    fizz moves rsp up 8 bytes, and so the first instruction of fizz moves rsp back to the 
+    base of the call stack (where rbp points). Then, the instructions in fizz acquire
+    the value of 'val' from the address 16 bytes above (address 16 bytes greater in magnitude)
+    where rsp currently points. For this reason, we must include an 8 byte padding between 
+    where rbp points and where the cookie will be. To incorporate all of this popping, returning,
+    and padding, we must have a string of 7 8-byte frames of any combinations, followed by 
+    the address of fizz in the return address location, followed by 1 8-byte frame of any
+    combination (padding), and finally the cookie itself: val.
+    
+b. What instruction in `fizz` finds the value of the `val` argument?
+   Give the instruction's address and assembly code.
+
+    0x0000000000400f5e <+14>:    mov    0x10(%rsp),%rsi
+
+c. Where does the instruction from (b) find `val` relative to the top
+   of the call stack?  (Give a byte offset.)
+
+    +16 bytes above the call stack.
+
+EXPLOIT 3:
+
+a. Starting from the `ret` instruction in `getbuf`, list the sequence
+   of instructions that the computer executes under your exploit up
+   through the first instruction in `bang`. For each instruction, list
+   the instruction address and its assembly code.
+
+    movabsq $0x602128, %rdi               # put the global_variable's address in register rdi
+    movabsq $0x4446c2e8480cb779, %rax     # put the cookie in rax
+    movq %rax, (%rdi)                     # make the cookie what %rdi points to: the address of global_variable
+                                          # stored in %rdi is the pointer to the cookie's value 
+    pushq $0x400fa0                       # push the address of bang onto the stack
+    retq                                  # return from this (start execution of bang)
+
+b. Describe how the instruction sequence in (a) changes memory
+   contents, register contents, and program counter. (Write a
+   couple/few sentences or annotate your listing above.)
+
+    We replacee the old return address with the address of where our machine code will carry out;
+    this location is exactly 64 bytes below the current location of rsp, as rsp at this point is 
+    at the return instruction in the stack, and we begin execution of the machine code from the 
+    address of the bottom of the stack. Thus, when we reach that return instruction, the new address 
+    to the bottom of the stack directs us there, starting the execution of the machine code, and the 
+    machine code's step-by-step analysis is written in part (a)'s annotations. 
+
+EXPLOIT 4:
+
+a. What instruction in `test` inspects the return value of `getbuf`?
+   Give its instruction address and assembly code.
+
+    0x0000000000401013 <+35>:    cmp    $0x28,%rax
+
+b. Under your exploit, what instruction stores the return value that
+   is later inspected by the instruction in (a) to "trick" `test`?
+   Does this return-value-storing instruction execute before or after
+   the `ret` in `getbuf`?
+
+    0:	48 b8 79 b7 0c 48 e8 	movabs $0x4446c2e8480cb779,%rax
+
+    This instruction executes after the 'ret' in getbuf. We manipulate the stack so that 
+    'getbuf' returns the address of the beginning of our exploit code, thus allowing it to 
+    execute the 'return-value-storing' instruction.
+
+c. Let "a non-`%rax` storage cell" refer to any register that is not
+   `%rax` *or* any memory location.  Consider the instructions in
+   `test` that execute after `test`'s call to `getbuf`. Of these
+   instructions, find the first that reads from a non-`%rax` storage
+   cell whose contents were most recently written by an instruction
+   that is outside `test`. Give the address and assembly code of that
+   instruction.
+
+    The contents of %rbp are changed and then restored back to their original value within the 
+    function getbuf. getbuf is called within test. Thus, after getbuf executes, the first time 
+    %rbp is referred to/used within test is at this line:
+
+    0x0000000000401019 <+41>:    mov    -0x18(%rbp),%rbx
+
+d. Give the memory addressing expression or register name by which the
+   instruction from (c) refers to the non-`%rax` storage cell in question.
+
+    0x0000000000401019 <+41>:    mov    -0x18(%rbp),%rbx
+    --> the register that uses this referral is %rbx  
+
+e. Give the address and assembly code of the instruction outside
+   `test` that is the last instruction to update the non-`%rax`
+   storage cell from (c,d) before the instruction from (c) uses it
+   **under normal non-exploited execution**. Explain the purpose of
+   this instruction in context of procedure calling conventions.
+
+    Answer: leaveq 
+    Explanation:
+    In the second line in getbuf's instructions, we see that %rbp is set to point to %rsp, thus
+    changing the contents of its stored address:
+
+    0x0000000000400df1 <+1>:     mov    %rsp,%rbp 
+
+    Because %rbp is a callee-saved register, we must ensure that its original value is preserved 
+    after executing getbuf. Thus, towards the end of getbuf, we execute the following instruction:
+
+    0x0000000000400e69 <+121>:   leaveq
+
+    This instruction translates to the following: 
+    mov %rbp, %rsp
+    popq %rbp
+
+    By popping %rbp, we essentially restore its initial value: the address of the second frame 
+    of the stack, or $0x7fffffffbf20. This is very important, as %rbp is the base pointer,
+    and so its stored value is used during 'test' to allocate values to different frames in the 
+    stack relative to the address stored in %rbp. Thus, it is extremely important that %rbp 
+    is restored to its location as the second frame of the stack (right below the return frame),
+    as our program will crash with segmentation faults if we do not do this correctly and then attempt
+    to base future allocations based off of %rbp. 
+
+f. Explain how this same non-`%rax` storage location is updated before
+   the instruction from (c) uses it **under exploited execution with
+   your input**. Give the address and assembly code of any
+   instructions you reference.
+
+    Answer: I move the address of the second frame of the stack into %rbp in the exploit code
+    Explanation:
+    As aforementioned, we move the address which %rbp contained originally (before getbuf runs) 
+    back into the %rbp to maintain its callee-saved register status. %rbp points to the second frame 
+    in the stack originally, or contains address $0x7fffffffbf20, so we reinstate this address in 
+    %rbp via leaveq:
+    
+    0x0000000000400e69 <+121>:   leaveq 
+    
+    When we write and run our exploit code, we have to be sure that we do not overwrite the address of 
+    the second frame in our string, because this will end up changing the value of %rbp which will 
+    cause problems when 'test' refers to the contents of %rbp and uses it to allocate store other values 
+    at other addresses relative to that of %rbp:
+
+    a:	48 bd 20 bf ff ff ff 	movabs $0x7fffffffbf20,%rbp   
+
+g. Why might `test` crash if your exploit does not heed the importance
+   of how the instruction from (f) uses the stack? Write a sentence or
+   two.
+
+    A segmentation fault will occur if the exploit does not restore %rbp with the address of the 
+    second frame of the stack. This will cause 'test' to crash, as the value stored in %rbp may be 
+    too low or unrecognizable when interpreted as an address.
+
+h. How does your exploit avoid the crash in (g)? Write a sentence or two.
+
+    My exploit avoids this segmentation fault crash by moving the address of the second frame of the 
+    stack into %rbp in my exploit string, thereby overwriting any other value that may have been 
+    stored in it before and restoring it to its original value. 
+
+

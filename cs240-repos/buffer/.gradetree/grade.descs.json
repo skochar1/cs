@@ -1,0 +1,278 @@
+{
+    "title": "Descriptions",
+    "links": [],
+    "subgrades": [
+        {
+            "title": "Exploit 1",
+            "links": [],
+            "subgrades": [
+                {
+                    "title": "a: First affected control-flow instruction",
+                    "links": [],
+                    "notes": [
+                        "Gives correct address and code of the retq in getbuf."
+                    ],
+                    "points": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "title": "b: Cause of different retq behavior",
+                    "links": [],
+                    "subgrades": [
+                        {
+                            "title": "Relevant bytes (offset) in exploit string",
+                            "links": [],
+                            "notes": [
+                                "Identifies the 8 bytes at offset 56 in the exploit string."
+                            ],
+                            "points": [
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        {
+                            "title": "Effect of these bytes on the retq",
+                            "links": [],
+                            "notes": [
+                                "Identifies that these bytes overwrite the slot where retq",
+                                "finds the return address, thereby controlling the address",
+                                "of the next instruction to execute after retq."
+                            ],
+                            "points": [
+                                1.0,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "c: Normal next instruction",
+                    "links": [],
+                    "notes": [
+                        "Correct next instruction."
+                    ],
+                    "points": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "title": "d: Exploited next instruction",
+                    "links": [],
+                    "notes": [
+                        "Correct next instruction."
+                    ],
+                    "points": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Exploit 2",
+            "links": [],
+            "subgrades": [
+                {
+                    "title": "a: Exploit structure",
+                    "links": [],
+                    "subgrades": [
+                        {
+                            "title": "Placement of padding word",
+                            "links": [],
+                            "notes": [
+                                "Accurately describes placement of padding word after return address in exploit string,"
+                            ],
+                            "points": [
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        {
+                            "title": "Placement of cookie word",
+                            "links": [],
+                            "notes": [
+                                "Accurately describes placement of cookie word in exploit string,"
+                            ],
+                            "points": [
+                                1.0,
+                                1.0
+                            ]
+                        },
+                        {
+                            "title": "Interaction of exploit and fizz through stack",
+                            "links": [],
+                            "notes": [
+                                "Clearly describes relation of cookie placement in exploit string",
+                                "and how fizz finds val on the stack."
+                            ],
+                            "points": [
+                                1.0,
+                                1.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "b: fizz instruction that finds val",
+                    "links": [],
+                    "notes": [
+                        "Gives the address and code of the instruction in fizz,",
+                        "that finds val on the stack."
+                    ],
+                    "points": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "title": "c: fizz stack offset for val",
+                    "links": [],
+                    "notes": [
+                        "Gives the stack offset that fizz uses to find val."
+                    ],
+                    "points": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Exploit 3",
+            "links": [],
+            "subgrades": [
+                {
+                    "title": "a: Dynamic exploit instruction sequence",
+                    "links": [],
+                    "subgrades": [
+                        {
+                            "title": "Instruction addresses",
+                            "links": [],
+                            "notes": [
+                                "Does not give concrete instruction addresses."
+                            ],
+                            "points": [
+                                0.0,
+                                0.5
+                            ]
+                        },
+                        {
+                            "title": "Instruction listing",
+                            "links": [],
+                            "notes": [
+                                "Complete."
+                            ],
+                            "points": [
+                                2.0,
+                                2.0
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "b: Instruction effects",
+                    "links": [],
+                    "notes": [
+                        "Accurately describes all instruction effects."
+                    ],
+                    "points": [
+                        2.5,
+                        2.5
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Exploit 4",
+            "links": [],
+            "subgrades": [
+                {
+                    "title": "a: Instruction that inspects return value",
+                    "links": [],
+                    "notes": [
+                        "Correct instruction."
+                    ],
+                    "points": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "title": "b: Instruction that stores return value",
+                    "links": [],
+                    "subgrades": [
+                        {
+                            "title": "Instruction",
+                            "links": [],
+                            "notes": [
+                                "Correct instruction."
+                            ],
+                            "points": [
+                                0.5,
+                                0.5
+                            ]
+                        },
+                        {
+                            "title": "Execution time relative to getbuf retq",
+                            "links": [],
+                            "notes": [
+                                "After."
+                            ],
+                            "points": [
+                                0.5,
+                                0.5
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "c-d: Use %rbp, which was restored from overwritten stack in getbuf",
+                    "links": [],
+                    "notes": [
+                        "Correct instruction and register usage: %rbp."
+                    ],
+                    "points": [
+                        0.5,
+                        0.5
+                    ]
+                },
+                {
+                    "title": "e-f: getbuf restores callee-saved value from overwritten stack into %rbp",
+                    "links": [],
+                    "notes": [
+                        "Identifies callee-save register convention."
+                    ],
+                    "points": [
+                        0.5,
+                        0.5
+                    ]
+                },
+                {
+                    "title": "g: Crash cause",
+                    "links": [],
+                    "notes": [
+                        "Describes a feasible cause for crashes in incomplete exploits."
+                    ],
+                    "points": [
+                        1.0,
+                        1.0
+                    ]
+                },
+                {
+                    "title": "h: Crash avoidance",
+                    "links": [],
+                    "notes": [
+                        "Accurately describes how this exploit avoids crash-causing corruption."
+                    ],
+                    "points": [
+                        1.0,
+                        1.0
+                    ]
+                }
+            ]
+        }
+    ]
+}

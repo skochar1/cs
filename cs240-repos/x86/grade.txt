@@ -1,0 +1,142 @@
++----------------------------------------------------------------------+
+| cs240f20 x86 (x86) Grade Summary                                     |
++----------------------------------------------------------------------+
+  Phase Descriptions: 17.0 / 20
+    Phase 2: 13.5 / 15
+      Great mid- and low-level description. Try to extract a high-level description as well: "reads 6 integers and uses a loop to determine if they are a geometric sequence of the form..."
+      Phase 2 high-level summary: 4.5 / 6
+        Captures the rough idea of the high-level computation, but
+        clarity or completeness could be improved.
+      Phase 2 low-level operations: 3 / 3
+        Clearly identifies relevant operations in the low-level computation
+        that are key to the high-level computation.
+      Phase 2 connection: 6 / 6
+        Clearly explains connection of low-level operations to high-level computation.
+    Phase 5: 3.5 / 5
+      Good mid-to-level description. Try to extract a succint high-level description as well.
+      Phase 5 high-level summary: 1.0 / 2
+        Touches on aspects of high-level computation, but does not
+        capture the whole.
+      Phase 5 low-level operations: 1 / 1
+        Clearly identifies relevant operations in the low-level computation
+        that are key to the high-level computation.
+      Phase 5 connection: 1.5 / 2
+        Explains some connection of relevant low-level operations to high-level computation,
+        or clearly explains connection of moderately important low-level operations.
+  Phase Inputs: 80 / 80
+    Phase 1: 5 / 5
+      Passed! :)
+    Phase 2: 20 / 20
+      Passed! :)
+    Phase 3: 20 / 20
+      Passed! :)
+    Phase 4: 20 / 20
+      Passed! :)
+    Phase 5: 10 / 10
+      Passed! :)
+    Phase 6: 5 / 5
+      Passed! :)
++----------------------------------------------------------------------+
+| TOTAL: 97.0 / 100                                                    |
++----------------------------------------------------------------------+
+
++----------------------------------------------------------------------+
+| meta.out                                                             |
++----------------------------------------------------------------------+
+x86 (x86) submission by:
+  jl4: Julie Lely <jl4@wellesley.edu>
+  sk1: Shreya Kochar <sk1@wellesley.edu>
+
+Commit log as of this report:
+
+commit f642d8fc8988fc76ed5c1f9ed4043cb5da9f2f86
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Wed Sep 23 15:56:04 2020 -0400
+
+    signature by jl4
+
+commit 487d6bb199cf7bdcfa8831642bc26352e5aa5755
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Wed Sep 23 15:56:01 2020 -0400
+
+    responses by jl4
+
+commit 4730f5668ae3a59a38cd9f8596944e5d572ef967
+Author: Julie <jl4@cs.wellesley.edu>
+Date:   Wed Sep 23 14:24:07 2020 -0400
+
+    small changes
+
+commit 267c65fafe42307469192110b7d17a69a089055f
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Wed Sep 23 00:41:04 2020 -0400
+
+    signature by sk1
+
+commit ff87c99066fd70d1d0b236aebdbf679a71c69ab6
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Wed Sep 23 00:40:57 2020 -0400
+
+    responses by sk1
+
+commit a05edd246f12c08ee056271d609681e878a094d4
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Wed Sep 23 00:39:59 2020 -0400
+
+    complete explanations
+
+commit 0d919de05d58abff0347604fcce7117d5eea3c36
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Wed Sep 23 00:00:39 2020 -0400
+
+    1-4 explained
+
+commit 05799b3f286304520a8ae06c70600dff548ce7d3
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Mon Sep 21 10:55:11 2020 -0400
+
+    all correct inputs
+
+commit db632e22c20f9efe07ca2bd9b0e8ae62bbcfe05b
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sun Sep 20 02:18:26 2020 -0400
+
+    4 phases done
+
+commit b184d6325df1ae018f821ee11174d5d585dd99cb
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sat Sep 19 16:22:29 2020 -0400
+
+    Phases 1 and 2 complete
+
+commit f53e9c1055393f81d716f4e304510645c1745635
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Sat Sep 19 12:51:54 2020 -0400
+
+    try this
+
+commit f382786d20252b4c76ea6489d99dae36d169c024
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Thu Sep 17 11:49:58 2020 -0400
+
+    removed select script
+
+commit 960398fb861715f185d52ae219fbb1b9e737b435
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Thu Sep 17 11:49:56 2020 -0400
+
+    selected executable by id jl4
+
+commit d8cc783924c83322e6982f940217af03c8e56b3a
+Author: Shreya Kochar <sk1@cs.wellesley.edu>
+Date:   Thu Sep 17 11:49:14 2020 -0400
+
+    sk1 started team jl4-sk1
+
+commit 6c92005580aa86680e937f2f1b83c7811a67320a
+Author: Ben Wood <benjamin.wood@wellesley.edu>
+Date:   Thu Sep 17 00:28:00 2020 -0400
+
+    Starter code for x86
+
+

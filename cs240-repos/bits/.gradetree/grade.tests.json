@@ -1,0 +1,13 @@
+{
+    "title": "Correctness and performance",
+    "links": [
+        "bits.out"
+    ],
+    "notes": [
+        "= driver.pl score scaled by 1.5."
+    ],
+    "points": [
+        72.0,
+        72
+    ]
+}

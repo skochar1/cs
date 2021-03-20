@@ -1,0 +1,12 @@
+tour
+ptest
+command
+command_test
+ctest
+*.o
+*.dSYM
+*~
+*\#*
+.\#*
+.DS_Store
+vgcore.*
